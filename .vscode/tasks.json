@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "maven: javafx:run",
+      "type": "shell",
+      "command": "mvn javafx:run",
+      "group": "build"
+    }
+  ]
+}
