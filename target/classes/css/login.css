@@ -1,0 +1,57 @@
+/* === TEXT FIELDS === */
+#idField, #passwordField {
+  -fx-background-radius: 0;
+  -fx-border-radius: 0;
+  -fx-border-color: #475569;
+  -fx-border-width: 1.5;
+
+  -fx-padding: 0.333em 0.583em 0.333em 0.583em;
+  -fx-pref-height: 28px;
+  -fx-background-insets: 0;
+  -fx-font-family: Verdana;
+
+  -fx-font-size: 14px;
+  -fx-font-weight: 600;
+  -fx-text-fill: #f1f5f9;
+  -fx-background-color: linear-gradient(to bottom left, #0a1929, #142950);
+
+  -fx-cursor: text;
+}
+
+/* === FOCUS EFFECT === */
+#idField:focused, #passwordField:focused {
+  -fx-border-color: #3b82f6;
+  -fx-background-color: #0f176a;
+  -fx-border-width: 2;
+  -fx-effect: dropshadow(gaussian, rgba(45, 15, 246, 0.3), 8, 0.5, 0, 0);
+}
+
+/* === HOVER EFFECT === */
+#idField:hover, #passwordField:hover {
+  -fx-background-color: #1e296b;
+  -fx-border-color: #6474Ab;
+}
+
+/* === STATIC LABEL (Titles, Descriptions) === */
+#staticLabel {
+  -fx-text-fill: #e2e8f0;
+  -fx-font-size: 18px;
+  -fx-font-weight: 700;
+  -fx-letter-spacing: 0.3px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0.2, 0, 1);
+}
+
+/* === ERROR LABEL === */
+#errorLabel {
+  -fx-text-fill: #ef4444;
+  -fx-font-size: 12px;
+  -fx-font-weight: 600;
+  -fx-padding: 8 12 8 12;
+  -fx-background-color: rgba(239, 68, 68, 0.08);
+  -fx-border-color: rgba(239, 68, 68, 0.3);
+  -fx-border-width: 1;
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
+  -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.15), 3, 0.2, 0, 1);
+  -fx-letter-spacing: 0.3px;
+}

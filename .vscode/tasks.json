@@ -2,10 +2,18 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "maven: javafx:run",
+      "label": "Run JavaFX via Maven",
       "type": "shell",
-      "command": "mvn javafx:run",
-      "group": "build"
+      "command": "mvn clean javafx:run ",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      }
     }
   ]
 }

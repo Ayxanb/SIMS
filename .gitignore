@@ -1,0 +1,2 @@
+# Ignore database credentials
+src/main/resources/db.properties
