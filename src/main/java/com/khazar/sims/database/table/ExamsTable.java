@@ -1,12 +1,13 @@
 package com.khazar.sims.database.table;
 
-import com.khazar.sims.database.data.Exam;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.khazar.sims.database.data.Exam;
 
 public class ExamsTable {
   private final Connection connection;
@@ -26,7 +27,7 @@ public class ExamsTable {
       VALUES (?, ?, ?)
     """;
     try (PreparedStatement statement = connection.prepareStatement(query)) {
-      statement.setInt(1, exam.getOfferingId());
+      statement.setInt(1, exam.getCourseOfferingId());
       statement.setDate(2, exam.getExamDate());
       // Using exam.getType() as a placeholder for display name if we had a dedicated field,
       // but sticking to the schema's core data for now.

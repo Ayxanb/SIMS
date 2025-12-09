@@ -26,8 +26,6 @@
   -fx-background-color: #FFFFFF;
   -fx-border-color: #E2E8F0;
   -fx-border-width: 1;
-  -fx-border-radius: 8;
-  -fx-background-radius: 8;
   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
   -fx-transition: all 0.2s ease;
 }
@@ -63,8 +61,6 @@
   -fx-background-color: #F8FAFC;
   -fx-border-color: #E2E8F0;
   -fx-border-width: 1;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
   -fx-padding: 10;
 }
 
@@ -78,8 +74,6 @@
   -fx-background-color: #FFFFFF;
   -fx-border-color: #CBD5E1;
   -fx-border-width: 1;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
   -fx-font-size: 11px;
   -fx-padding: 6 12;
 }
@@ -94,8 +88,6 @@
   -fx-background-color: #FFFFFF;
   -fx-border-color: #CBD5E1;
   -fx-border-width: 1;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
   -fx-padding: 8 16;
   -fx-font-weight: 600;
   -fx-font-size: 11px;
@@ -121,8 +113,6 @@
   -fx-text-fill: #FFFFFF;
   -fx-font-weight: bold;
   -fx-padding: 8 16;
-  -fx-border-radius: 6;
-  -fx-background-radius: 6;
   -fx-cursor: hand;
 }
 
@@ -135,8 +125,6 @@
   -fx-background-color: #FFFFFF;
   -fx-border-color: #E2E8F0;
   -fx-border-width: 1;
-  -fx-border-radius: 8;
-  -fx-background-radius: 8;
 }
 
 /* --- Table Styles --- */
@@ -221,8 +209,6 @@
   -fx-background-color: #E0E7FF;
   -fx-text-fill: #4338CA;
   -fx-padding: 4 10;
-  -fx-border-radius: 12;
-  -fx-background-radius: 12;
   -fx-font-size: 10px;
   -fx-font-weight: bold;
 }
@@ -270,8 +256,6 @@
   -fx-background-color: #FFFFFF;
   -fx-border-color: #CBD5E1;
   -fx-border-width: 1;
-  -fx-border-radius: 4;
-  -fx-background-radius: 4;
   -fx-padding: 4 8;
   -fx-font-size: 11px;
 }

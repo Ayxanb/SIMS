@@ -20,7 +20,7 @@ public class Grade {
   public int getStudentId() { return studentId; }
   public void setStudentId(int studentId) { this.studentId = studentId; }
 
-  public int getOfferingId() { return offeringId; }
+  public int getCourseOfferingId() { return offeringId; }
   public void setOfferingId(int offeringId) { this.offeringId = offeringId; }
 
   public String getAssessmentName() { return assessmentName; }

@@ -19,7 +19,7 @@ public class Exam {
     this(1, examDate, type, maxScore);
   }
 
-  public int getOfferingId() { return offeringId; }
+  public int getCourseOfferingId() { return offeringId; }
   public void setOfferingId(int offeringId) { this.offeringId = offeringId; }
   public Date getExamDate() { return examDate; }
   public void setExamDate(Date examDate) { this.examDate = examDate; }

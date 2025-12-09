@@ -182,7 +182,7 @@ public class AttendanceController {
       return;
     }
 
-    Task<List<AttendanceRecord>> task = createAttendanceLoadTask(selected.getOfferingId(), date);
+    Task<List<AttendanceRecord>> task = createAttendanceLoadTask(selected.getCourseOfferingId(), date);
     
     task.setOnRunning(e -> {
       updateStatus("Loading attendance for " + formatDate(date) + "...", "info");
@@ -302,7 +302,7 @@ public class AttendanceController {
     return new Task<>() {
       @Override
       protected Void call() throws SQLException, NoScheduleException {
-        int offeringId = cmbCourse.getValue().getOfferingId();
+        int offeringId = cmbCourse.getValue().getCourseOfferingId();
         LocalDate date = dpAttendanceDate.getValue();
         Schedule schedule = Session.getScheduleTable().getByDate(offeringId, date);
         
@@ -430,7 +430,7 @@ public class AttendanceController {
       this.display = display;
     }
 
-    public int getOfferingId() { return offeringId; }
+    public int getCourseOfferingId() { return offeringId; }
     @Override public String toString() { return display; }
   }
 }

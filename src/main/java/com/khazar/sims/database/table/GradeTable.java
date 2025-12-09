@@ -62,7 +62,7 @@ public class GradeTable extends BaseTable<Grade> {
     """;
 
     int rows = executeUpdateWithCount(sql, ps -> {
-      ps.setInt(1, grade.getOfferingId());
+      ps.setInt(1, grade.getCourseOfferingId());
       ps.setInt(2, grade.getStudentId());
       ps.setString(3, grade.getAssessmentName());
       ps.setInt(4, grade.getScore());
@@ -88,7 +88,7 @@ public class GradeTable extends BaseTable<Grade> {
       ps.setInt(1, grade.getScore());
       ps.setInt(2, grade.getMaxScore());
       ps.setString(3, grade.getDateSubmitted());
-      ps.setInt(4, grade.getOfferingId());
+      ps.setInt(4, grade.getCourseOfferingId());
       ps.setInt(5, grade.getStudentId());
       ps.setString(6, grade.getAssessmentName());
     });

@@ -29,7 +29,7 @@ public class Schedule {
 
   public int getId() { return id; }
 
-  public int getOfferingId() { return offeringId; }
+  public int getCourseOfferingId() { return offeringId; }
   public void setOfferingId(int offeringId) { this.offeringId = offeringId; }
 
   public String getDayOfWeek() { return dayOfWeek; }

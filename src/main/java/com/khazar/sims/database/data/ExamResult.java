@@ -22,7 +22,7 @@ public class ExamResult {
     this.maxScore = maxScore;
   }
 
-  public int getOfferingId() { return offeringId; }
+  public int getCourseOfferingId() { return offeringId; }
   public void setOfferingId(int offeringId) { this.offeringId = offeringId; }
 
   public int getStudentId() { return studentId; }

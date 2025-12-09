@@ -236,7 +236,7 @@ public class StudentsController {
       this.display = display;
     }
     
-    public int getOfferingId() { return offeringId; }
+    public int getCourseOfferingId() { return offeringId; }
 
     @Override
     public String toString() {

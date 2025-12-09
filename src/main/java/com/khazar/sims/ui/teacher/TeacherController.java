@@ -24,8 +24,6 @@ import javafx.scene.layout.StackPane;
  * 
  */
 public class TeacherController {
-  /* ==================== FXML COMPONENTS ==================== */
-  
   @FXML private StackPane contentArea;
   
   /* Navigation Buttons */
@@ -35,23 +33,12 @@ public class TeacherController {
   @FXML private Button btnSchedule;
   @FXML private Button btnGrades;
   
-  private List<Button> navButtons;
-  
   /**
    * Initializes the teacher dashboard
    * Sets up navigation buttons and loads default view
    */
   @FXML
-  public void initialize() {
-    /* Initialize navigation button list for styling management */
-    navButtons = List.of(
-      btnCourses, 
-      btnStudents, 
-      btnAttendance, 
-      btnSchedule,
-      btnGrades
-    );
-    
+  public void initialize() {    
     /* Load default view - Courses */
     handleCoursesClicked();
   }
@@ -63,7 +50,13 @@ public class TeacherController {
    * @param activeBtn The button to mark as active
    */
   private void setActiveButton(Button activeBtn) {
-    navButtons.forEach(btn -> btn.getStyleClass().remove("active-nav"));
+    List.of(
+      btnCourses, 
+      btnStudents, 
+      btnAttendance, 
+      btnSchedule,
+      btnGrades
+    ).forEach(btn -> btn.getStyleClass().remove("active-nav"));
     activeBtn.getStyleClass().add("active-nav");
   }
   

@@ -1,13 +1,14 @@
 package com.khazar.sims.database.table;
 
-import com.khazar.sims.database.data.ExamResult;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.khazar.sims.database.data.ExamResult;
 
 public class ExamResultsTable {
   private final Connection connection;
@@ -75,7 +76,7 @@ public class ExamResultsTable {
 
     try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
       updateStmt.setDouble(1, result.getScore());
-      updateStmt.setInt(2, result.getOfferingId());
+      updateStmt.setInt(2, result.getCourseOfferingId());
       updateStmt.setInt(3, result.getStudentId());
       updateStmt.setDate(4, result.getExamDate());
       
@@ -84,7 +85,7 @@ public class ExamResultsTable {
       if (rowsAffected == 0) {
         // No update performed, so insert
         try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
-          insertStmt.setInt(1, result.getOfferingId());
+          insertStmt.setInt(1, result.getCourseOfferingId());
           insertStmt.setInt(2, result.getStudentId());
           insertStmt.setDate(3, result.getExamDate());
           insertStmt.setDouble(4, result.getScore());

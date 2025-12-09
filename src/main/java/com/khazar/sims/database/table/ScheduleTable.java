@@ -15,7 +15,7 @@ public class ScheduleTable {
       VALUES (?, ?, ?, ?, ?)
     """;
     try (PreparedStatement ps = Session.getDatabaseConnection().prepareStatement(sql)) {
-      ps.setInt(1, schedule.getOfferingId());
+      ps.setInt(1, schedule.getCourseOfferingId());
       ps.setString(2, schedule.getDayOfWeek());
       ps.setTime(3, Time.valueOf(schedule.getStartTime()));
       ps.setTime(4, Time.valueOf(schedule.getEndTime()));

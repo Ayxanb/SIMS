@@ -23,17 +23,21 @@
                     <padding><Insets left="20.0" right="20.0"/></padding>
                 </VBox>
 
-                <Button fx:id="btnCourses" maxWidth="Infinity"
-                        onAction="#handleA"
-                        styleClass="nav-btn" text="A"/>
+                <Button fx:id="btnSchedule" maxWidth="Infinity"
+                        onAction="#handleSchedule"
+                        styleClass="nav-btn" text="🗓 Schedule"/>
 
-                <Button fx:id="btnEnrollments" maxWidth="Infinity"
-                        onAction="#handleB"
-                        styleClass="nav-btn" text="B"/>
+                <Button fx:id="btnGrades" maxWidth="Infinity"
+                        onAction="#handleGrades"
+                        styleClass="nav-btn" text="💯 Grades"/>
+
+                <Button fx:id="btnTranscript" maxWidth="Infinity"
+                        onAction="#handleTranscript"
+                        styleClass="nav-btn" text="Transcript"/>
 
                 <Button fx:id="btnAttendance" maxWidth="Infinity"
-                        onAction="#handleC"
-                        styleClass="nav-btn" text="C"/>
+                        onAction="#handleAttendance"
+                        styleClass="nav-btn" text="🙋 Attendance"/>
 
                 <VBox VBox.vgrow="ALWAYS"/>
 
