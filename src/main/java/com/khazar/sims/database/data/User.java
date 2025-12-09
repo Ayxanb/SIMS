@@ -13,6 +13,7 @@ public class User {
   private boolean isActive;
 
   public User() {}
+
   public User(String role, String firstName, String lastName, String email, String password, Date dateOfBirth) {
     this.role = role;
     this.firstName = firstName;
@@ -51,8 +52,8 @@ public class User {
   public String getPassword() { return password; }
   public void setPassword(String password) { this.password = password; }
 
-  public java.sql.Date getDateOfBirth() { return dateOfBirth; }
-  public void setDateOfBirth(java.sql.Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+  public Date getDateOfBirth() { return dateOfBirth; }
+  public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
   public void setIsActive(boolean isActive) { this.isActive = isActive; }
   public boolean isActive() { return isActive; }

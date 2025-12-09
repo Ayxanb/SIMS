@@ -66,9 +66,8 @@ public class UserTable extends BaseTable<User> {
    * @return The User DTO with the generated ID.
    */
   public User add(User user, String password) throws SQLException {
-    // In a real application, 'password' must be hashed before insertion here.
+    /*  In a real application, 'password' must be hashed before insertion here. */
     String sql = "INSERT INTO users(first_name, last_name, email, password, role, date_of_birth, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    
     int id = executeInsert(
       sql,
       ps -> {
