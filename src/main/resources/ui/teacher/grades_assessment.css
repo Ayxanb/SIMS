@@ -1,0 +1,290 @@
+@import url("shared_teacher.css");
+
+/* ==================== GRADES & ASSESSMENT VIEW ==================== */
+
+/* --- Page Layout --- */
+.content-area {
+  -fx-background-color: #F8FAFC;
+}
+
+.header-section {
+  -fx-padding: 10;
+}
+
+.page-title {
+  -fx-text-fill: #1E293B;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+}
+
+/* --- Statistics Panel --- */
+.stats-panel {
+  -fx-padding: 10;
+}
+
+.stat-card {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+  -fx-transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);
+  -fx-translate-y: -2;
+}
+
+.stat-label {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 9px;
+  -fx-font-weight: 600;
+  -fx-letter-spacing: 0.5px;
+}
+
+.stat-value {
+  -fx-text-fill: #1E293B;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+.stat-success {
+  -fx-text-fill: #10B981;
+}
+
+.stat-primary {
+  -fx-text-fill: #3B82F6;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-padding: 10;
+}
+
+.filter-label {
+  -fx-text-fill: #475569;
+  -fx-font-size: 11px;
+  -fx-font-weight: bold;
+}
+
+.filter-combo {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-font-size: 11px;
+  -fx-padding: 6 12;
+}
+
+.filter-combo:focused {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+}
+
+/* --- Buttons --- */
+.btn-outline {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-padding: 8 16;
+  -fx-font-weight: 600;
+  -fx-font-size: 11px;
+  -fx-cursor: hand;
+  -fx-transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #94A3B8;
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
+}
+
+.btn-outline:pressed {
+  -fx-background-color: #E2E8F0;
+  -fx-scale-x: 0.98;
+  -fx-scale-y: 0.98;
+}
+
+.action-button {
+  -fx-background-color: #1D4ED8;
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-padding: 8 16;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-cursor: hand;
+}
+
+.action-button:hover {
+  -fx-background-color: #2563EB;
+}
+
+/* --- Table Container --- */
+.table-container {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+}
+
+/* --- Table Styles --- */
+.data-table {
+  -fx-background-color: transparent;
+  -fx-table-cell-border-color: transparent;
+}
+
+.data-table .column-header-background {
+  -fx-background-color: #F8FAFC;
+}
+
+.data-table .column-header {
+  -fx-background-color: transparent;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 0 0 2 0;
+  -fx-padding: 10;
+}
+
+.data-table .column-header .label {
+  -fx-font-weight: bold;
+  -fx-font-size: 11px;
+  -fx-text-fill: #1E293B;
+}
+
+.data-table .table-row-cell {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: transparent;
+}
+
+.data-table .table-row-cell:odd {
+  -fx-background-color: #FFFFFF;
+}
+
+.data-table .table-row-cell:even {
+  -fx-background-color: #F9FAFB;
+}
+
+.data-table .table-row-cell:hover {
+  -fx-background-color: #F1F5F9;
+}
+
+.data-table .table-row-cell:selected {
+  -fx-background-color: #DBEAFE;
+  -fx-text-fill: #1E3A8A;
+}
+
+.data-table .table-cell {
+  -fx-padding: 10;
+  -fx-font-size: 11px;
+  -fx-text-fill: #334155;
+}
+
+/* --- Editable Cell Styling --- */
+.data-table .table-cell:editable {
+  -fx-background-color: #FFFBEB;
+  -fx-cursor: text;
+}
+
+.data-table .table-cell:editable:hover {
+  -fx-background-color: #FEF3C7;
+}
+
+/* --- Score Highlighting --- */
+.high-score {
+  -fx-text-fill: #059669;
+  -fx-font-weight: bold;
+}
+
+.medium-score {
+  -fx-text-fill: #D97706;
+  -fx-font-weight: bold;
+}
+
+.low-score {
+  -fx-text-fill: #DC2626;
+  -fx-font-weight: bold;
+}
+
+/* --- Grade Badge Styles --- */
+.grade-badge {
+  -fx-background-color: #E0E7FF;
+  -fx-text-fill: #4338CA;
+  -fx-padding: 4 10;
+  -fx-border-radius: 12;
+  -fx-background-radius: 12;
+  -fx-font-size: 10px;
+  -fx-font-weight: bold;
+}
+
+.grade-badge.pass {
+  -fx-background-color: #D1FAE5;
+  -fx-text-fill: #065F46;
+}
+
+.grade-badge.fail {
+  -fx-background-color: #FEE2E2;
+  -fx-text-fill: #991B1B;
+}
+
+/* --- Status Bar --- */
+.status-bar {
+  -fx-background-color: #F1F5F9;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1 0 0 0;
+  -fx-padding: 6 10;
+}
+
+.status-label {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 10px;
+}
+
+.status-success {
+  -fx-text-fill: #10B981;
+  -fx-font-weight: 600;
+}
+
+.status-error {
+  -fx-text-fill: #EF4444;
+  -fx-font-weight: 600;
+}
+
+.status-info {
+  -fx-text-fill: #3B82F6;
+  -fx-font-weight: 600;
+}
+
+/* --- Text Field in Table --- */
+.text-field {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 4;
+  -fx-background-radius: 4;
+  -fx-padding: 4 8;
+  -fx-font-size: 11px;
+}
+
+.text-field:focused {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+  -fx-background-color: #FFFBEB;
+}
+
+/* --- Empty Table Placeholder --- */
+.data-table .placeholder .label {
+  -fx-text-fill: #94A3B8;
+  -fx-font-size: 12px;
+  -fx-font-style: italic;
+}

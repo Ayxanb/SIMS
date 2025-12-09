@@ -1,0 +1,157 @@
+/* ==================== BASE STYLES ==================== */
+.root {
+  -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -fx-font-size: 14px;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+  -fx-background-color: linear-gradient(to bottom, #FFFFFF 0%, #F8FAFC 100%);
+  -fx-pref-width: 260px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0.0, 2, 0);
+  -fx-border-color: #E2E8F0;
+  -fx-border-color: #3b82f6;
+  -fx-border-width: 0 1px 0 0; /* Highlight bar on the left */
+}
+
+/* ==================== SIDEBAR HEADER ==================== */
+.sidebar-header {
+  -fx-background-color: transparent;
+}
+
+.header-title {
+  -fx-text-fill: #1E293B;
+  -fx-font-weight: bold;
+  -fx-font-size: 20px;
+  -fx-padding: 0 0 5 0;
+}
+
+.header-subtitle {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 12px;
+  -fx-font-weight: 500;
+}
+
+/* ==================== SECTION LABELS ==================== */
+.section-label {
+  -fx-text-fill: #94A3B8;
+  -fx-font-weight: bold;
+  -fx-font-size: 10px;
+  -fx-padding: 15 20 8 20;
+  -fx-alignment: CENTER_LEFT;
+}
+
+/* ==================== NAVIGATION BUTTONS ==================== */
+.nav-btn {
+  -fx-background-color: transparent;
+  -fx-text-fill: #475569;
+  -fx-font-size: 14px;
+  -fx-font-weight: 600;
+  -fx-alignment: CENTER_LEFT;
+  -fx-padding: 12 20;
+  -fx-cursor: hand;
+  -fx-graphic-text-gap: 10;
+  -fx-border-width: 0;
+}
+
+.nav-btn:hover {
+  -fx-background-color: #F1F5F9;
+  -fx-text-fill: #1E293B;
+}
+
+/* Active Navigation State */
+.active-nav {
+  -fx-background-color: linear-gradient(to right, #DBEAFE 0%, #BFDBFE 100%);
+  -fx-text-fill: #1D4ED8;
+  -fx-font-weight: bold;
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 0 0 0 4px;
+  -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.15), 6, 0, 0, 0);
+}
+
+.active-nav:hover {
+  -fx-background-color: linear-gradient(to right, #BFDBFE 0%, #93C5FD 100%);
+}
+
+/* ==================== LOGOUT BUTTON ==================== */
+.logout-btn {
+  -fx-background-color: linear-gradient(to bottom, #EF4444 0%, #DC2626 100%);
+  -fx-text-fill: #FFFFFF;
+  -fx-font-weight: bold;
+  -fx-font-size: 14px;
+  -fx-padding: 12 20;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.4), 8, 0.0, 0, 2);
+}
+
+.logout-btn:hover {
+  -fx-background-color: linear-gradient(to bottom, #DC2626 0%, #B91C1C 100%);
+  -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.5), 10, 0.0, 0, 3);
+  -fx-scale-y: 1.02;
+}
+
+.logout-btn:pressed {
+  -fx-background-color: #B91C1C;
+  -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.3), 6, 0.0, 0, 1);
+}
+
+/* ==================== SEPARATORS ==================== */
+.separator {
+  -fx-background-color: #E2E8F0;
+  -fx-padding: 0;
+  -fx-min-height: 1;
+  -fx-pref-height: 1;
+  -fx-opacity: 0.6;
+}
+
+.separator .line {
+  -fx-background-color: #E2E8F0;
+  -fx-border-width: 0;
+}
+
+/* ==================== CONTENT AREA ==================== */
+.content-area {
+  -fx-background-color: #F8FAFC;
+  -fx-padding: 0;
+}
+
+/* ==================== FOCUS STATES ==================== */
+.nav-btn:focused {
+  -fx-background-color: #E5E7EB;
+  -fx-faint-focus-color: transparent;
+  -fx-focus-color: transparent;
+}
+
+.button:focused, 
+.text-field:focused {
+  -fx-faint-focus-color: transparent;
+  -fx-focus-color: #3B82F6;
+}
+
+/* ==================== SCROLLBAR (If Needed) ==================== */
+.scroll-bar {
+  -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+  -fx-background-color: #CBD5E1;
+}
+
+.scroll-bar .thumb:hover {
+  -fx-background-color: #94A3B8;
+}
+
+.scroll-bar .track {
+  -fx-background-color: #F1F5F9;
+}
+
+/* ==================== HOVER ANIMATIONS ==================== */
+.nav-btn {
+  -fx-transition: all 0.2s ease;
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+.nav-btn:focused-visible {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+}

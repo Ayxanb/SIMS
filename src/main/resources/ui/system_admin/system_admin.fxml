@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" stylesheets="@system_admin.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.khazar.sims.ui.system_admin.SystemAdminController">
+  <!-- LEFT: SIDEBAR -->
+  <left>
+    <VBox alignment="TOP_LEFT" spacing="5" styleClass="sidebar">
+      <children>
+        <!-- Title/Header Area -->
+        <VBox alignment="TOP_LEFT">
+          <padding>
+            <Insets left="20.0" right="20.0" />
+          </padding>
+        </VBox>
+        
+        <Separator styleClass="separator" />
+
+        <!-- Navigation Groups -->
+        <Button fx:id="btnCourses" maxWidth="1.7976931348623157E308" onAction="#handleFacultiesClicked" styleClass="nav-btn" text="🏤 Faculties" />
+        <Button fx:id="btnEnrollmentsClicked" maxWidth="1.7976931348623157E308" onAction="#handleDepartmentsClicked" styleClass="nav-btn" text="🏢 Departments" />
+        <Button fx:id="btnUsers" maxWidth="1.7976931348623157E308" onAction="#handleUsersClicked" styleClass="nav-btn" text="👤 User Management" />
+        <Button fx:id="btnSemesters" maxWidth="1.7976931348623157E308" onAction="#handleSemestersClicked" styleClass="nav-btn" text="📅 Semesters" />
+        
+        <!-- Spacer for bottom elements -->
+        <VBox VBox.vgrow="ALWAYS" />
+        
+        <!-- Logout/Footer Area -->
+        <VBox>
+          <children>
+            <!-- Example Logout Button (using btn-danger styling concept) -->
+            <Button maxWidth="1.7976931348623157E308" styleClass="logout-btn" onAction="#handleLogout" text="↪️ Logout" />
+          </children>
+          <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+          </VBox.margin>
+        </VBox>
+      </children>
+    </VBox>
+  </left>
+  
+  <!-- CENTER: CONTENT AREA -->
+  <center>
+    <StackPane fx:id="contentArea" styleClass="content-area" BorderPane.alignment="CENTER" />
+  </center>
+</BorderPane>

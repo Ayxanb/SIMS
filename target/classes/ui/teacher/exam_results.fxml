@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="950.0" spacing="8.0" styleClass="content-area" 
+      stylesheets="@shared_teacher.css" 
+      xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.khazar.sims.ui.teacher.ExamResultsController">
+   
+   <padding>
+      <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+   </padding>
+   
+   <children>
+      <!-- Header -->
+      <HBox spacing="10.0" styleClass="header-section" alignment="CENTER_LEFT">
+         <children>
+            <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="page-title" text="Exam Results">
+                     <font><Font name="System Bold" size="16.0" /></font>
+                  </Label>
+                  <Label styleClass="page-subtitle" 
+                         text="View exam scores and performance statistics" />
+               </children>
+            </VBox>
+            <ProgressIndicator fx:id="progressIndicator" visible="false" 
+                               prefHeight="25.0" prefWidth="25.0" />
+         </children>
+      </HBox>
+      
+      <Separator styleClass="header-separator" />
+      
+      <!-- Statistics -->
+      <HBox spacing="10.0" styleClass="stats-panel">
+         <children>
+            <VBox spacing="2.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Average Score" styleClass="stat-label">
+                     <font><Font size="9.0" /></font>
+                  </Label>
+                  <Label fx:id="lblAverageScore" text="0.0" styleClass="stat-value stat-primary">
+                     <font><Font name="System Bold" size="20.0" /></font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="2.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Highest Score" styleClass="stat-label">
+                     <font><Font size="9.0" /></font>
+                  </Label>
+                  <Label fx:id="lblHighestScore" text="0.0" styleClass="stat-value stat-success">
+                     <font><Font name="System Bold" size="20.0" /></font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="2.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Lowest Score" styleClass="stat-label">
+                     <font><Font size="9.0" /></font>
+                  </Label>
+                  <Label fx:id="lblLowestScore" text="0.0" styleClass="stat-value stat-warning">
+                     <font><Font name="System Bold" size="20.0" /></font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="2.0" styleClass="stat-card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Pass Rate" styleClass="stat-label">
+                     <font><Font size="9.0" /></font>
+                  </Label>
+                  <Label fx:id="lblPassRate" text="0.0%" styleClass="stat-value">
+                     <font><Font name="System Bold" size="20.0" /></font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      
+      <!-- Filters -->
+      <HBox spacing="10.0" styleClass="filter-bar" alignment="CENTER_LEFT">
+         <children>
+            <Label text="Course:" styleClass="filter-label">
+               <font><Font name="System Bold" size="11.0" /></font>
+            </Label>
+            <ComboBox fx:id="cmbCourse" onAction="#handleCourseSelected" prefWidth="280.0" 
+                      promptText="Select course..." styleClass="filter-combo" />
+            
+            <Label text="Exam:" styleClass="filter-label">
+               <font><Font name="System Bold" size="11.0" /></font>
+            </Label>
+            <ComboBox fx:id="cmbExam" onAction="#handleExamSelected" prefWidth="200.0" 
+                      promptText="Select exam..." styleClass="filter-combo" />
+            
+            <Region HBox.hgrow="ALWAYS" />            
+         </children>
+         <padding>
+            <Insets bottom="8.0" left="10.0" right="10.0" top="8.0" />
+         </padding>
+      </HBox>
+      
+      <!-- Results Table -->
+      <VBox styleClass="table-container" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="resultsTable" styleClass="data-table" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="colStudentNo" prefWidth="100.0" text="Student ID" />
+                  <TableColumn fx:id="colStudentName" prefWidth="200.0" text="Student Name" />
+                  <TableColumn fx:id="colScore" prefWidth="100.0" text="Score" />
+                  <TableColumn fx:id="colMaxScore" prefWidth="100.0" text="Max Score" />
+                  <TableColumn fx:id="colPercentage" prefWidth="100.0" text="Percentage" />
+                  <TableColumn fx:id="colGrade" prefWidth="100.0" text="Grade" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      
+      <!-- Status Bar -->
+      <HBox alignment="CENTER" styleClass="status-bar">
+         <children>
+            <Label fx:id="statusLabel" styleClass="status-label" text="Status: Ready">
+               <font><Font size="10.0" /></font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

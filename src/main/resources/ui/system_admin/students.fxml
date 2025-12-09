@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <!-- Top toolbar -->
+    <HBox spacing="10" BorderPane.alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Search students..."/>
+        <Button text="Add" styleClass="btn-primary" />
+        <Button text="Edit" styleClass="btn-secondary" />
+        <Button text="Delete" styleClass="btn-danger" />
+    </HBox>
+
+    <!-- Table -->
+    <TableView fx:id="studentsTable" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="colFullName" text="Full Name" />
+            <TableColumn fx:id="colEmail" text="Email" />
+            <TableColumn fx:id="colDepartment" text="Department" />
+            <TableColumn fx:id="colYear" text="Enrollment Year" />
+        </columns>
+    </TableView>
+
+</BorderPane>

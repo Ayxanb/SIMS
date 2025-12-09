@@ -1,0 +1,70 @@
+/* Root layout */
+#root {
+  -fx-background-color: transparent;
+}
+
+/* Main content area */
+.content-pane {
+  -fx-background-color: #f8fafc;
+  -fx-border-color: #1a478b;
+  -fx-border-width: 0 2 2 2;
+}
+
+/* Title bar */
+.titlebar {
+  -fx-background-color: linear-gradient(to right, #0b1a6a 0%, #0a378f 100%);
+  -fx-border-color: #0b1a3d;
+  -fx-border-width: 0 0 1 0;
+  -fx-alignment: center-left;
+  -fx-padding: 0;
+  -fx-spacing: 0;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0.2, 0, 1);
+}
+
+/* Window title */
+.title-label {
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 15px;
+  -fx-font-family: "Segoe UI", system-ui, sans-serif;
+  -fx-font-weight: 500;
+  -fx-padding: 0 0 0 24px;
+}
+
+/* Logo */
+.logo {
+  -fx-effect: none;
+}
+
+/* Control buttons */
+.control-button {
+  -fx-background-color: transparent;
+  -fx-border-width: 0;
+  -fx-font-weight: 500;
+  -fx-font-size: 14px;
+  -fx-text-fill: #f0f4f8;
+  -fx-cursor: hand;
+  -fx-padding: 0;
+  -fx-pref-width: 46px;
+  -fx-pref-height: 50px;
+  -fx-alignment: center;
+}
+
+#minimizeButton:hover,
+#maximizeButton:hover {
+  -fx-background-color: rgba(255, 255, 255, 0.15);
+  -fx-text-fill: #ffffff;
+}
+
+#minimizeButton:pressed,
+#maximizeButton:pressed {
+  -fx-background-color: rgba(255, 255, 255, 0.25);
+}
+
+#closeButton:hover {
+  -fx-background-color: #ef4444;
+  -fx-text-fill: #ffffff;
+}
+
+#closeButton:pressed {
+  -fx-background-color: #dc2626;
+}

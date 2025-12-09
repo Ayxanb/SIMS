@@ -1,0 +1,273 @@
+@import url("shared_teacher.css");
+
+/* ==================== CHECKBOX STYLING ==================== */
+.data-table .check-box {
+  -fx-cursor: hand;
+}
+
+.data-table .check-box .box {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 2;
+  -fx-border-radius: 4;
+  -fx-background-radius: 4;
+  -fx-padding: 0;
+}
+
+.data-table .check-box:hover .box {
+  -fx-border-color: #94A3B8;
+  -fx-background-color: #F8FAFC;
+}
+
+.data-table .check-box:selected .box {
+  -fx-background-color: #10B981;
+  -fx-border-color: #059669;
+}
+
+.data-table .check-box:selected:hover .box {
+  -fx-background-color: #059669;
+  -fx-border-color: #047857;
+}
+
+.data-table .check-box:selected .mark {
+  -fx-background-color: #FFFFFF;
+}
+
+/* ==================== ATTENDANCE ROW HIGHLIGHTING ==================== */
+.data-table .table-row-cell {
+  -fx-background-color: transparent;
+  -fx-transition: background-color 0.2s ease;
+}
+
+.data-table .table-row-cell.present {
+  -fx-background-color: #F0FDF4;
+}
+
+.data-table .table-row-cell.present:hover {
+  -fx-background-color: #DCFCE7;
+}
+
+.data-table .table-row-cell.absent {
+  -fx-background-color: #FEF2F2;
+}
+
+.data-table .table-row-cell.absent:hover {
+  -fx-background-color: #FEE2E2;
+}
+
+.data-table .table-row-cell:selected {
+  -fx-background-color: #DBEAFE !important;
+}
+
+.data-table .table-row-cell.present:selected {
+  -fx-background-color: #BBF7D0 !important;
+}
+
+.data-table .table-row-cell.absent:selected {
+  -fx-background-color: #FECACA !important;
+}
+
+/* ==================== DATE PICKER STYLING ==================== */
+.date-picker {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+}
+
+.date-picker:focused {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+}
+
+.date-picker .text-field {
+  -fx-font-weight: 600;
+  -fx-font-size: 11px;
+  -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button {
+  -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button .arrow {
+  -fx-background-color: #64748B;
+}
+
+.date-picker:hover .arrow-button .arrow {
+  -fx-background-color: #3B82F6;
+}
+
+/* ==================== BUTTON ENHANCEMENTS ==================== */
+.btn-outline {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-padding: 8 16;
+  -fx-font-weight: 600;
+  -fx-font-size: 11px;
+  -fx-cursor: hand;
+  -fx-transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #94A3B8;
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
+}
+
+.btn-outline:pressed {
+  -fx-background-color: #E2E8F0;
+  -fx-scale-x: 0.98;
+  -fx-scale-y: 0.98;
+}
+
+/* Save button when has unsaved changes */
+#btnSave {
+  -fx-transition: background-color 0.3s ease;
+}
+
+/* ==================== STATS PANEL ENHANCEMENTS ==================== */
+.stats-panel {
+  -fx-padding: 10;
+}
+
+.stat-card {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 4, 0, 0, 2);
+  -fx-transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);
+  -fx-translate-y: -2;
+}
+
+.stat-label {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 9px;
+  -fx-font-weight: 600;
+  -fx-letter-spacing: 0.5px;
+  -fx-text-transform: uppercase;
+}
+
+.stat-value {
+  -fx-text-fill: #1E293B;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+.stat-success {
+  -fx-text-fill: #10B981;
+}
+
+.stat-error {
+  -fx-text-fill: #EF4444;
+}
+
+.stat-primary {
+  -fx-text-fill: #3B82F6;
+}
+
+/* ==================== FILTER BAR ==================== */
+.filter-bar {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-padding: 10;
+}
+
+.filter-label {
+  -fx-text-fill: #475569;
+  -fx-font-size: 11px;
+  -fx-font-weight: bold;
+}
+
+.filter-combo {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+}
+
+.filter-combo:focused {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+}
+
+/* ==================== STATUS BAR ==================== */
+.status-bar {
+  -fx-background-color: #F1F5F9;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1 0 0 0;
+  -fx-padding: 6 10;
+}
+
+.status-label {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 10px;
+}
+
+.status-success {
+  -fx-text-fill: #10B981;
+  -fx-font-weight: 600;
+}
+
+.status-error {
+  -fx-text-fill: #EF4444;
+  -fx-font-weight: 600;
+}
+
+.status-info {
+  -fx-text-fill: #3B82F6;
+  -fx-font-weight: 600;
+}
+
+/* ==================== PROGRESS INDICATOR ==================== */
+.progress-indicator {
+  -fx-progress-color: #3B82F6;
+}
+
+/* ==================== TABLE ENHANCEMENTS ==================== */
+.table-container {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+}
+
+.data-table {
+  -fx-background-color: transparent;
+  -fx-table-cell-border-color: transparent;
+}
+
+.data-table .column-header {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 0 0 2 0;
+  -fx-padding: 10;
+}
+
+.data-table .column-header .label {
+  -fx-font-weight: bold;
+  -fx-font-size: 11px;
+  -fx-text-fill: #1E293B;
+}
+
+.data-table .table-cell {
+  -fx-padding: 10;
+  -fx-font-size: 11px;
+  -fx-text-fill: #334155;
+}

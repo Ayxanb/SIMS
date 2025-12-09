@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- 
+  Root: StackPane is used for full-screen layering, allowing the form overlay 
+  to be placed on top of the main BorderPane content.
+  The FXML controller is defined as com.khazar.sims.ui.system_admin.UserManagement.
+-->
+<StackPane prefHeight="650.0" 
+      prefWidth="950.0" 
+      stylesheets="@user_management.css" 
+      xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.khazar.sims.ui.system_admin.UserManagement">
+
+  <!-- LAYER 1: Main Content View (BorderPane) -->
+  <BorderPane prefHeight="200.0" prefWidth="200.0">
+    <padding>
+      <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+    
+    <!-- TOP: Header and Toolbar (Search, Filter, Actions) -->
+    <top>
+      <VBox spacing="10.0" alignment="CENTER">
+        <children>
+          <!-- Header -->
+          <Label styleClass="header" text="👤 User Management" />
+
+          <!-- Toolbar - Search, Filter, and Action Buttons -->
+          <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="toolbar">
+            <children>
+              <!-- Search and Filter Section -->
+              <HBox spacing="10" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <TextField fx:id="searchField"
+                      promptText="Search by name, email, or role..."
+                      styleClass="text-field-search"
+                      maxWidth="300"
+                      HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="cmbRoleFilter"
+                      promptText="Filter by Role"
+                      styleClass="filter-combo"
+                      prefWidth="150"
+                      onAction="#filterUsers"/>
+              </HBox>
+
+              <!-- Spacer to push buttons to the right -->
+              <Region HBox.hgrow="ALWAYS" />
+
+              <!-- Button Section -->
+              <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button   text="➕ Add User"
+                      onAction="#handleAddUser"
+                      styleClass="btn-primary"
+                      prefWidth="120"/>
+                <Button fx:id="editButton"
+                      text="✎ Edit"
+                      onAction="#handleEditUser"
+                      styleClass="btn-secondary"
+                      prefWidth="80"
+                      disable="true"/>
+                <Button fx:id="deleteButton"
+                      text="🗑 Delete"
+                      onAction="#handleDeleteUser"
+                      styleClass="btn-danger"
+                      prefWidth="80"
+                      disable="true"/>
+              </HBox>
+            </children>
+          </HBox>
+        </children>
+      </VBox>
+    </top>
+    
+    <!-- CENTER: Data Table and Status Label -->
+    <center>
+      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+        <children>
+          <!-- User Table -->
+          <TableView fx:id="userTable"
+                VBox.vgrow="ALWAYS"
+                styleClass="data-table"
+                maxWidth="Infinity"
+                prefWidth="-1">
+            <columns>
+              <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+              <TableColumn fx:id="colFullName" text="Full Name" prefWidth="150"/>
+              <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+              <TableColumn fx:id="colRole" text="Role" prefWidth="100"/>
+              <TableColumn fx:id="colStatus" text="Status" prefWidth="80"/>
+              <TableColumn fx:id="colLastLogin" text="Last Login" prefWidth="120"/>
+            </columns>
+            <columnResizePolicy>
+              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+          </TableView>
+          <!-- Status Label -->
+          <Label fx:id="statusLabel" styleClass="status-label"/>
+        </children>
+        <padding>
+          <Insets top="15.0" />
+        </padding>
+      </VBox>
+    </center>
+  </BorderPane>
+
+  <!-- LAYER 2: Form Overlay (Hidden by default, shown when adding/editing) -->
+  <AnchorPane fx:id="formPane"
+    visible="false"
+    styleClass="form-panel"
+    AnchorPane.topAnchor="0"
+    AnchorPane.rightAnchor="0"
+    AnchorPane.leftAnchor="0"
+    AnchorPane.bottomAnchor="0">
+    
+    <!-- Background Overlay (50% transparent black) -->
+    <VBox style="-fx-background-color: rgba(0, 0, 0, 0.5);"
+      AnchorPane.topAnchor="0"
+      AnchorPane.rightAnchor="0"
+      AnchorPane.leftAnchor="0"
+      AnchorPane.bottomAnchor="0"/>
+    
+    <!-- Form Container (Centered within the screen) -->
+    <VBox spacing="0"
+      alignment="CENTER"
+      maxWidth="500"
+      maxHeight="450"
+      AnchorPane.topAnchor="0"
+      AnchorPane.rightAnchor="0"
+      AnchorPane.leftAnchor="0"
+      AnchorPane.bottomAnchor="0">
+      
+      <!-- Form Content (White box with shadow) -->
+      <VBox spacing="20"
+        alignment="TOP_CENTER"
+        style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);"
+        maxWidth="450"
+        maxHeight="400">
+        
+        <!-- Form Header -->
+        <VBox spacing="5" 
+          alignment="CENTER"
+          style="-fx-padding: 0 0 0 0;">
+          <Label fx:id="formTitle"
+            text="Add/Edit User"
+            styleClass="form-title"/>
+        </VBox>
+
+        <!-- Form Fields -->
+        <VBox spacing="5" 
+          alignment="CENTER" 
+          maxWidth="400"
+          style="-fx-padding: 0 25;">
+          
+          <!-- User Name field -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="User's Full name *" styleClass="form-label"/>
+            <TextField fx:id="txtFullName"
+                promptText="Enter user's full name"
+                prefHeight="38"
+                styleClass="form-text-field"
+                maxWidth="400"/>
+          </VBox>
+
+          <!-- User email field (Corrected fx:id to txtEmail) -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="User's email *" styleClass="form-label"/>
+            <TextField fx:id="txtEmail"
+                promptText="Enter user's email"
+                prefHeight="38"
+                styleClass="form-text-field"
+                maxWidth="400"/>
+          </VBox>
+
+          <!-- User password field -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="User's password *" styleClass="form-label"/>
+            <PasswordField fx:id="pwdPassword"
+                promptText="Enter user's password (pick a strong one!)"
+                prefHeight="38"
+                styleClass="form-text-field"
+                maxWidth="400"/>
+          </VBox>
+
+          <!-- User role field -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="User's role *" styleClass="form-label"/>
+            <ComboBox fx:id="cmbRole"
+                promptText="Select user role"
+                prefHeight="38"
+                styleClass="form-combo-box"
+                maxWidth="400"/>
+          </VBox>
+
+          <!-- Account status field (Corrected Label text) -->
+          <HBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="Account Status" styleClass="form-label"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="chkActive" 
+                  text="Account is Active" 
+                  selected="true"
+                  prefHeight="38"
+                  styleClass="form-check-box"
+                  maxWidth="400"/>
+          </HBox>
+        </VBox>
+
+        <!-- Form Buttons -->
+        <HBox spacing="15" 
+          alignment="CENTER"
+          style="-fx-padding: 10 25 25 25;">
+          <Button text="Cancel"
+            onAction="#handleCancel"
+            styleClass="btn-outline"
+            prefWidth="120"
+            prefHeight="38"/>
+          <Button text="Save"
+            onAction="#handleSaveUser"
+            styleClass="btn-primary"
+            prefWidth="120"
+            prefHeight="38"
+            defaultButton="true"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </AnchorPane>
+</StackPane>

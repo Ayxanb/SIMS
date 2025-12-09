@@ -1,88 +1,81 @@
 package com.khazar.sims.database.table;
 
-import com.khazar.sims.core.Session;
-import com.khazar.sims.core.data.Department;
-
-import java.sql.Types;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.khazar.sims.database.data.Department;
+import com.khazar.sims.core.Session;
 
 import java.util.List;
-import java.util.ArrayList;
 
 /**
- * DepartmentTable provides static methods to interact with the `departments` table
- * in the database. Supports adding, updating, deleting, and retrieving department records.
+ * DepartmentTable — table access implemented on top of BaseTable helpers, 
+ * with robust resource management.
  */
-public class DepartmentTable {
+public class DepartmentTable extends BaseTable<Department> {
+  @Override
+  protected String getTableName() { return "departments"; }
 
-  /* ---------- Add a new department ---------- */
-  public static void add(Department department) throws SQLException {
-    final String sql = "INSERT INTO departments(name, head_id) VALUES (?, ?)";
-    try (PreparedStatement statement = Session.getDatabaseConnection()
-            .prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-      statement.setString(1, department.getName());
-      if (department.getHeadId() != null) statement.setInt(2, department.getHeadId());
-      else statement.setNull(2, Types.INTEGER);
+  @Override
+  protected Department map(ResultSet rs) throws SQLException {
+    return new Department(
+      rs.getInt("id"),
+      rs.getInt("faculty_id"),
+      rs.getString("name"),
+      rs.getString("code")
+    );
+  }
+  
+  @Override
+  public Department add(Department department) throws SQLException {
+    int generatedId = executeInsert(
+      "INSERT INTO departments (name, code, faculty_id) VALUES (?, ?, ?)", 
+      ps -> {
+        ps.setString(1, department.getName());
+        ps.setString(2, department.getCode());
 
-      statement.executeUpdate();
-
-      try (ResultSet rs = statement.getGeneratedKeys()) {
-        if (rs.next()) department.setId(rs.getInt(1));
+        ps.setInt(3, department.getFacultyId());
       }
-    }
+    );
+    department.setId(generatedId);
+    return department;
   }
 
-  /* ---------- Retrieve a department by ID ---------- */
-  public static Department getById(int id) throws SQLException {
-    final String sql = "SELECT id, name, head_id FROM departments WHERE id = ?";
-    try (PreparedStatement statement = Session.getDatabaseConnection().prepareStatement(sql)) {
-      statement.setInt(1, id);
-      try (ResultSet rs = statement.executeQuery()) {
-        if (rs.next()) return mapResultSet(rs);
+  @Override
+  public Department getById(int id) throws SQLException { return super.getById(id); }
+
+  @Override
+  public List<Department> getAll() throws SQLException { return super.getAll(); }
+
+  @Override
+  public void update(Department department) throws SQLException {
+    executeUpdate(
+      "UPDATE departments SET name = ?, code = ? WHERE id = ?",
+      ps -> {
+        ps.setString(1, department.getName());
+        ps.setString(2, department.getCode());
+        ps.setInt(3, department.getId());
       }
-    }
-    return null;
+    );
   }
 
-  /* ---------- Retrieve all departments ---------- */
-  public static List<Department> getAll() throws SQLException {
-    final String sql = "SELECT id, name, head_id FROM departments";
-    List<Department> list = new ArrayList<>();
-    try (Statement statement = Session.getDatabaseConnection().createStatement();
-         ResultSet rs = statement.executeQuery(sql)) {
-      while (rs.next()) list.add(mapResultSet(rs));
-    }
-    return list;
+  @Override
+  public void delete(int id) throws SQLException { super.delete(id); }
+
+  public Department getByName(String name) throws SQLException {
+    final String sql = "SELECT * FROM departments WHERE name = ?";
+    PreparedStatement ps = Session.getDatabaseConnection().prepareStatement(sql);
+    ps.setString(1, name);
+    ResultSet rs = ps.executeQuery();
+    return rs.next() ? map(rs) : null;
   }
 
-  /* ---------- Update an existing department ---------- */
-  public static void update(Department department) throws SQLException {
-    final String sql = "UPDATE departments SET name = ?, head_id = ? WHERE id = ?";
-    try (PreparedStatement statement = Session.getDatabaseConnection().prepareStatement(sql)) {
-      statement.setString(1, department.getName());
-      if (department.getHeadId() != null) statement.setInt(2, department.getHeadId());
-      else statement.setNull(2, Types.INTEGER);
-      statement.setInt(3, department.getId());
-
-      statement.executeUpdate();
-    }
-  }
-
-  /* ---------- Delete a department by ID ---------- */
-  public static void delete(int id) throws SQLException {
-    final String sql = "DELETE FROM departments WHERE id = ?";
-    try (PreparedStatement statement = Session.getDatabaseConnection().prepareStatement(sql)) {
-      statement.setInt(1, id);
-      statement.executeUpdate();
-    }
-  }
-
-  /* ---------- Helper method to map a ResultSet row to a Department object ---------- */
-  private static Department mapResultSet(ResultSet rs) throws SQLException {
-    Integer headId = rs.getObject("head_id") != null ? rs.getInt("head_id") : null;
-    return new Department(rs.getInt("id"), rs.getString("name"), headId);
+  public Department getByCode(String code) throws SQLException {
+    final String sql = "SELECT * FROM departments WHERE code = ?";
+    PreparedStatement ps = Session.getDatabaseConnection().prepareStatement(sql);
+    ps.setString(1, code);
+    ResultSet rs = ps.executeQuery();
+    return rs.next() ? map(rs) : null;
   }
 }

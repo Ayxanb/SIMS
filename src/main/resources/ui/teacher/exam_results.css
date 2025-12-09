@@ -1,0 +1,52 @@
+@import url("shared_teacher.css");
+
+/* Read-only badge */
+.readonly-badge {
+  -fx-background-color: #FEF3C7;
+  -fx-text-fill: #92400E;
+  -fx-padding: 5 12;
+  -fx-border-color: #FCD34D;
+  -fx-border-width: 1;
+}
+
+/* Grade-based row coloring */
+.data-table .grade-a {
+  -fx-background-color: #ECFDF5;
+}
+
+.data-table .grade-b {
+  -fx-background-color: #F0FDF4;
+}
+
+.data-table .grade-c {
+  -fx-background-color: #FFFBEB;
+}
+
+.data-table .grade-d {
+  -fx-background-color: #FEF2F2;
+}
+
+.data-table .grade-f {
+  -fx-background-color: #FEE2E2;
+}
+
+/* Score cell styling */
+.score-cell {
+  -fx-font-weight: bold;
+  -fx-alignment: CENTER;
+}
+
+/* Percentage styling */
+.percentage-high {
+  -fx-text-fill: #059669;
+  -fx-font-weight: bold;
+}
+
+.percentage-medium {
+  -fx-text-fill: #D97706;
+}
+
+.percentage-low {
+  -fx-text-fill: #DC2626;
+  -fx-font-weight: bold;
+}

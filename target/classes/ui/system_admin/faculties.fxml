@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane stylesheets="@faculties.css"
+    xmlns="http://javafx.com/javafx/25"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.khazar.sims.ui.system_admin.Faculties">
+  
+  <!-- Main Content Container: Stretches to fill the entire AnchorPane -->
+  <VBox spacing="20" 
+    styleClass="main-content-container"
+    AnchorPane.topAnchor="20"
+    AnchorPane.bottomAnchor="20"
+    AnchorPane.leftAnchor="20"
+    AnchorPane.rightAnchor="20"
+    alignment="TOP_CENTER">
+  
+  <!-- Title -->
+  <Label text="🏤 Faculty Management" styleClass="header"/>
+  
+  <!-- Toolbar: Handles Search and Action Buttons -->
+  <HBox spacing="15" 
+    alignment="CENTER_LEFT" 
+    VBox.vgrow="NEVER"
+    maxWidth="Infinity">
+    
+    <!-- Search Section: Takes maximum available space -->
+    <TextField fx:id="searchField"
+       promptText="Search by name, code, or faculty..."
+       HBox.hgrow="ALWAYS"
+       maxWidth="400"
+       minWidth="200"
+       styleClass="text-field-search"/>
+    
+    <!-- Button Section: Aligned right, fixed width for buttons -->
+    <HBox spacing="10" 
+      alignment="CENTER_RIGHT"
+      HBox.hgrow="NEVER">
+    <Button fx:id="addButton"
+      text="Add Faculty"
+      onAction="#handleAddFaculty"
+      styleClass="btn-primary"
+      prefWidth="120"/>
+    <Button fx:id="editButton"
+      text="Edit Selected"
+      onAction="#handleEditFaculty"
+      styleClass="btn-secondary"
+      prefWidth="120"
+      disable="true"/>
+    <Button fx:id="deleteButton"
+      text="Delete Selected"
+      onAction="#handleDeleteFaculty"
+      styleClass="btn-danger"
+      prefWidth="120"
+      disable="true"/>
+    </HBox>
+  </HBox>
+
+  <!-- Table Section: Grows vertically to fill remaining space -->
+  <VBox spacing="10" 
+    alignment="TOP_CENTER" 
+    VBox.vgrow="ALWAYS"
+    maxWidth="Infinity">
+    
+    <TableView fx:id="facultyTable"
+       VBox.vgrow="ALWAYS"
+       styleClass="data-table"
+       maxWidth="Infinity">
+    <columns>
+      <!-- Columns use CONSTRAINED_RESIZE_POLICY for responsiveness -->
+      <TableColumn fx:id="colId" text="ID" minWidth="60" prefWidth="80"/>
+      <TableColumn fx:id="colName" text="Faculty Name" minWidth="200"/>
+      <TableColumn fx:id="colCode" text="Code" minWidth="100"/>
+    </columns>
+    <columnResizePolicy>
+      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+    </columnResizePolicy>
+    </TableView>
+
+    <Label fx:id="statusLabel"
+       styleClass="status-label"
+       maxWidth="Infinity"
+       alignment="CENTER"/>
+  </VBox>
+  </VBox>
+
+  <!-- Form Overlay -->
+  <AnchorPane fx:id="formPane"
+        visible="false"
+        styleClass="form-panel"
+        AnchorPane.topAnchor="0"
+        AnchorPane.rightAnchor="0"
+        AnchorPane.leftAnchor="0"
+        AnchorPane.bottomAnchor="0">
+    
+    <!-- Background Overlay -->
+    <VBox style="-fx-background-color: rgba(0, 0, 0, 0.5);"
+      AnchorPane.topAnchor="0"
+      AnchorPane.rightAnchor="0"
+      AnchorPane.leftAnchor="0"
+      AnchorPane.bottomAnchor="0"/>
+    
+    <!-- Form Container -->
+    <VBox spacing="0"
+      alignment="CENTER"
+      maxWidth="500"
+      maxHeight="450"
+      AnchorPane.topAnchor="0"
+      AnchorPane.rightAnchor="0"
+      AnchorPane.leftAnchor="0"
+      AnchorPane.bottomAnchor="0">
+      
+      <!-- Form Content -->
+      <VBox spacing="20"
+        alignment="TOP_CENTER"
+        style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);"
+        maxWidth="450"
+        maxHeight="400">
+        
+        <!-- Form Header -->
+        <VBox spacing="5" 
+          alignment="CENTER"
+          style="-fx-padding: 25 25 0 25;">
+          <Label fx:id="formTitle"
+              text="Add/Edit Faculty"
+              styleClass="form-title"/>
+          <Label text="Fill in the faculty details."
+              styleClass="subheader"
+              wrapText="true"
+              maxWidth="400"
+              alignment="CENTER"/>
+        </VBox>
+
+        <!-- Form Fields -->
+        <VBox spacing="15" 
+          alignment="CENTER" 
+          maxWidth="400"
+          style="-fx-padding: 0 25;">
+          
+          <!-- Faculty Name Field -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="Faculty Name *" styleClass="form-label"/>
+            <TextField fx:id="txtName"
+                  promptText="Enter faculty name"
+                  prefHeight="38"
+                  styleClass="text-field"
+                  maxWidth="400"/>
+          </VBox>
+          
+          <!-- Faculty Code Field -->
+          <VBox spacing="5" 
+            alignment="CENTER_LEFT" 
+            maxWidth="400">
+            <Label text="Faculty Code *" styleClass="form-label"/>
+            <TextField fx:id="txtCode"
+                  promptText="Enter unique code"
+                  prefHeight="38"
+                  styleClass="text-field"
+                  maxWidth="400"/>
+          </VBox>          
+        </VBox>
+
+        <!-- Form Buttons -->
+        <HBox spacing="15" 
+          alignment="CENTER"
+          style="-fx-padding: 10 25 25 25;">
+          <Button text="Cancel"
+              onAction="#handleCancel"
+              styleClass="btn-outline"
+              prefWidth="120"
+              prefHeight="38"/>
+          <Button text="Save"
+              onAction="#handleSaveFaculty"
+              styleClass="btn-primary"
+              prefWidth="120"
+              prefHeight="38"
+              defaultButton="true"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </AnchorPane>
+</AnchorPane>

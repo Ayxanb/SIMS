@@ -1,0 +1,194 @@
+/* ================= BASE STYLES ================= */
+.root {
+	/* Base font settings */
+	-fx-font-family: "Segoe UI", system-ui, sans-serif;
+	-fx-font-size: 14px;
+	-fx-background-color: #f8fafc; /* Light gray background */
+}
+
+/* Base VBox container for padding */
+.content-container {
+	-fx-background-color: #f8fafc;
+}
+
+/* ================= HEADER & TITLE STYLES ================= */
+.label {
+	-fx-font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* Renamed from .label.header to .header-label for direct FXML reference */
+.header-label {
+	-fx-font-size: 24px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #1f2937; /* Dark gray text */
+	-fx-padding: 10 0 10 0;
+}
+
+/* ================= FORM OVERLAY STYLES ================= */
+/* Overlay: This is the transparent background that covers the main view */
+.overlay {
+	-fx-background-color: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+}
+
+/* Form Panel: Styles for the actual form container VBox */
+.form-panel {
+	-fx-background-color: #ffffff;
+	-fx-padding: 30;
+	-fx-spacing: 20;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.5, 0, 10);
+	-fx-border-radius: 8;
+	-fx-background-radius: 8;
+}
+
+/* Renamed from .label.form-title to .form-title for direct FXML reference */
+.form-title {
+	-fx-font-size: 20px;
+	-fx-font-weight: 700;
+	-fx-text-fill: #1f2937;
+	-fx-padding: 0 0 10 0;
+}
+
+/* ================= INPUT & TEXT FIELD STYLES ================= */
+/* Renamed from .text-field to .form-input and also applies to search field */
+.form-input, .search-field {
+	-fx-background-color: #ffffff;
+	-fx-padding: 8 12;
+	-fx-text-fill: #1f2937;
+	-fx-prompt-text-fill: #9ca3af;
+	-fx-font-size: 14px;
+	-fx-border-color: #d1d5db;
+	-fx-border-width: 1px;
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+}
+
+.form-input:focused, .search-field:focused {
+	-fx-border-color: #3b82f6;
+	-fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.2), 4, 0, 0, 0);
+	-fx-background-color: #f8fafc;
+}
+
+/* ComboBox specific styles */
+.combo-box .list-cell {
+	-fx-text-fill: #1f2937;
+	-fx-padding: 6 12;
+}
+
+/* ================= BUTTON STYLES (Standard) ================= */
+.button {
+	-fx-font-weight: 600;
+	-fx-font-size: 14px;
+	-fx-cursor: hand;
+	-fx-padding: 10 16;
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0.0, 0, 1);
+}
+
+/* Primary Button (Save/Add) - Renamed from .btn-primary */
+.primary-button {
+	-fx-background-color: #3b82f6; /* Blue */
+	-fx-text-fill: white;
+}
+.primary-button:hover {
+	-fx-background-color: #2563eb;
+	-fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 8, 0.0, 0, 2);
+}
+
+/* Secondary Button (Cancel/Outline) - Renamed from .btn-outline */
+.secondary-button {
+	-fx-background-color: transparent;
+	-fx-text-fill: #4b5563;
+	-fx-border-color: #d1d5db;
+	-fx-border-width: 1;
+	-fx-effect: none;
+}
+.secondary-button:hover {
+	-fx-background-color: #f3f4f6;
+}
+
+/* --- Action Column Buttons (Java Code References) --- */
+.action-button {
+	-fx-font-size: 12px;
+	-fx-padding: 4 8; /* Smaller padding for inline buttons */
+	-fx-effect: none;
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+}
+
+.edit-button {
+	-fx-background-color: #e0f2fe; /* Light blue */
+	-fx-text-fill: #0c4a6e; /* Darker blue text */
+}
+.edit-button:hover {
+	-fx-background-color: #bae6fd;
+}
+
+.delete-button {
+	-fx-background-color: #fee2e2; /* Light red */
+	-fx-text-fill: #991b1b; /* Darker red text */
+}
+.delete-button:hover {
+	-fx-background-color: #fca5a5;
+}
+/* --- End Action Column Buttons --- */
+
+
+/* ================= TABLE STYLES ================= */
+.data-table {
+	-fx-background-color: transparent; /* Makes the table blend with container */
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8,0,0,2);
+	-fx-background-radius: 8;
+	-fx-border-radius: 8;
+}
+
+.table-view .column-header {
+	-fx-background-color: #e5e7eb; /* Slightly darker header */
+	-fx-font-weight: 700;
+	-fx-font-size: 13px;
+	-fx-text-fill: #374151;
+	-fx-alignment: CENTER_LEFT;
+	-fx-padding: 12 8;
+}
+
+.table-view .column-header-background {
+	-fx-background-color: transparent; /* Set background transparent to show VBox background */
+}
+
+.table-view .table-row-cell {
+	-fx-background-color: #ffffff;
+	-fx-text-fill: #374151;
+}
+
+.table-view .table-row-cell:odd {
+	-fx-background-color: #f9fafb; /* Lighter stripe for odd rows */
+}
+
+.table-view .table-row-cell:selected {
+	-fx-background-color: #dbeafe; /* Light blue selection */
+	-fx-text-fill: #1d4ed8;
+}
+
+.table-view .table-row-cell:hover {
+	-fx-background-color: #eff6ff; /* Very light blue on hover */
+}
+
+.table-view .table-cell {
+	-fx-padding: 10 8;
+	-fx-text-fill: #374151;
+	-fx-alignment: CENTER_LEFT;
+	-fx-font-size: 13px;
+	-fx-border-color: transparent transparent #f3f4f6 transparent; /* Subtle row separator */
+}
+
+/* Remove default table corner background */
+.table-view .corner {
+	-fx-background-color: transparent;
+}
+
+/* ================= STATUS LABEL ================= */
+.status-label {
+	-fx-font-size: 12px;
+	-fx-text-fill: #6b7280;
+	-fx-padding: 5 0 0 0;
+}

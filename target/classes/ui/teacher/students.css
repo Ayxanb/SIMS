@@ -1,0 +1,45 @@
+@import url("shared_teacher.css");
+
+/* ==================== STUDENTS VIEW SPECIFIC ==================== */
+
+/* Enhanced search field for students */
+.search-field {
+  -fx-prompt-text-fill: #94A3B8;
+}
+
+.search-field:focused {
+  -fx-prompt-text-fill: #64748B;
+}
+
+/* Student table row styling */
+.data-table .table-row-cell:filled:selected {
+  -fx-background-color: #DBEAFE;
+}
+
+/* GPA column highlighting */
+.data-table .table-cell:filled {
+  -fx-alignment: CENTER_LEFT;
+}
+
+/* High GPA highlighting */
+.high-gpa {
+  -fx-text-fill: #059669;
+  -fx-font-weight: bold;
+}
+
+.medium-gpa {
+  -fx-text-fill: #D97706;
+}
+
+.low-gpa {
+  -fx-text-fill: #DC2626;
+}
+
+/* Department badge styling */
+.department-badge {
+  -fx-background-color: #E0E7FF;
+  -fx-text-fill: #4338CA;
+  -fx-padding: 2 8;
+  -fx-font-size: 10px;
+  -fx-font-weight: bold;
+}

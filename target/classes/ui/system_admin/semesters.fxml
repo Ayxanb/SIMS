@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+<!-- Corrected fx:controller attribute on the root element -->
+<StackPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.khazar.sims.ui.system_admin.SemesterController">
+	<VBox spacing="15.0" styleClass="content-container">
+		<padding>
+			<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+		</padding>
+
+		<!-- Header and Controls -->
+		<HBox alignment="CENTER_LEFT" spacing="20.0">
+			<!-- Updated styleClass to match CSS naming convention -->
+			<Label styleClass="header-label" text="Semester Management" />
+			<TextField fx:id="searchField" prefWidth="250.0" promptText="Search by Name or Status..." styleClass="search-field" />
+			<ComboBox fx:id="statusFilter" prefWidth="150.0" promptText="Filter by Status" styleClass="search-field" />
+			<!-- Updated styleClass to match CSS naming convention -->
+			<Button onAction="#handleNewSemester" text="Add New Semester" styleClass="primary-button" />
+		</HBox>
+
+		<!-- Main Table View -->
+		<TableView fx:id="semesterTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+			<columns>
+				<TableColumn fx:id="colID" maxWidth="5000.0" minWidth="60.0" prefWidth="70.0" text="ID" />
+				<TableColumn fx:id="colName" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="250.0" text="Name" />
+				<TableColumn fx:id="colStartDate" maxWidth="5000.0" minWidth="100.0" prefWidth="150.0" text="Start Date" />
+				<TableColumn fx:id="colEndDate" maxWidth="5000.0" minWidth="100.0" prefWidth="150.0" text="End Date" />
+				<TableColumn fx:id="colActions" maxWidth="5000.0" minWidth="120.0" prefWidth="150.0" resizable="false" sortable="false" text="Actions" />
+			</columns>
+			<columnResizePolicy>
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			</columnResizePolicy>
+		</TableView>
+
+		<!-- Status Bar -->
+		<!-- Updated styleClass to match CSS naming convention -->
+		<Label fx:id="statusLabel" styleClass="status-label" />
+	</VBox>
+
+	<!-- Form Overlay (Initially Hidden) -->
+	<!-- Updated styleClass to match CSS naming convention -->
+	<StackPane fx:id="formOverlay" styleClass="overlay">
+		<!-- Updated styleClass to match CSS naming convention -->
+		<VBox alignment="TOP_CENTER" maxWidth="450.0" prefWidth="450.0" spacing="20.0" styleClass="form-panel">
+			<!-- Updated styleClass to match CSS naming convention -->
+			<Label fx:id="formTitle" styleClass="form-title" text="Add New Semester" />
+			<Separator />
+
+			<GridPane hgap="15.0" vgap="15.0">
+				<columnConstraints>
+					<ColumnConstraints hgrow="NEVER" minWidth="100.0" prefWidth="120.0" />
+					<ColumnConstraints hgrow="ALWAYS" minWidth="200.0" prefWidth="300.0" />
+				</columnConstraints>
+
+				<Label text="Semester Name:" GridPane.rowIndex="0" />
+				<!-- Updated styleClass to match CSS naming convention -->
+				<TextField fx:id="nameField" promptText="e.g., Fall 2026" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+				<Label text="Start Date (YYYY-MM-DD):" GridPane.rowIndex="1" />
+				<!-- Updated styleClass to match CSS naming convention -->
+				<TextField fx:id="startDateField" promptText="e.g., 2026-09-01" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+				<Label text="End Date (YYYY-MM-DD):" GridPane.rowIndex="2" />
+				<!-- Updated styleClass to match CSS naming convention -->
+				<TextField fx:id="endDateField" promptText="e.g., 2026-12-20" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+				<Label text="Status:" GridPane.rowIndex="3" />
+				<!-- Updated styleClass to match CSS naming convention -->
+				<ComboBox fx:id="statusComboBox" prefWidth="1.7976931348623157E308" promptText="Select Status" styleClass="form-input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+			</GridPane>
+
+			<HBox alignment="CENTER_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
+				<!-- Updated styleClass to match CSS naming convention (using secondary-button for Cancel) -->
+				<Button onAction="#handleCancel" text="Cancel" styleClass="secondary-button" />
+				<!-- Updated styleClass to match CSS naming convention -->
+				<Button fx:id="saveButton" onAction="#handleSaveSemester" text="Save Semester" styleClass="primary-button" />
+			</HBox>
+		</VBox>
+		<StackPane.margin>
+			<Insets />
+		</StackPane.margin>
+	</StackPane>
+
+	<!-- Link CSS -->
+	<stylesheets>
+		<String fx:value="@sims.css" />
+	</stylesheets>
+</StackPane>

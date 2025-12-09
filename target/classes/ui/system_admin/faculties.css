@@ -1,0 +1,207 @@
+/*
+* Revised and Standardized CSS for SIMS Administrative Modules
+* Focus: Readability, Modern Aesthetics (Rounded Corners, Shadows), and Consistency
+*/
+
+/* ================= 1. BASE & ROOT STYLES ================= */
+.root {
+  -fx-font-family: "Segoe UI", system-ui, sans-serif;
+  -fx-font-size: 14px;
+  -fx-background-color: #f8fafc; /* Light gray background */
+}
+
+/* ================= 2. LAYOUT CONTAINERS ================= */
+/* Main content padding is handled in FXML, ensuring full responsiveness */
+.main-content-container {
+  -fx-background-color: transparent; /* Ensure the VBox doesn't hide the root background */
+}
+
+/* ================= 3. HEADER & TITLE STYLES ================= */
+.label {
+  /* Base label style, inherited by all labels */
+  -fx-font-family: "Segoe UI", system-ui, sans-serif;
+  -fx-text-fill: #1f2937;
+}
+
+.label .header {
+  -fx-font-size: 26px; /* Slightly larger title */
+  -fx-font-weight: bold;
+  -fx-text-fill: #111827;
+  -fx-padding: 0 0 5px 0;
+}
+
+.form-title {
+  -fx-font-size: 22px;
+  -fx-font-weight: 700;
+  -fx-text-fill: #111827;
+  -fx-padding: 0 0 10px 0;
+}
+
+.form-label {
+  -fx-font-size: 13px;
+  -fx-font-weight: 600;
+  -fx-text-fill: #4b5563;
+}
+
+/* ================= 4. INPUT & TEXT FIELD STYLES ================= */
+.text-field,
+.password-field,
+.text-area,
+.combo-box {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1px;
+  -fx-text-fill: #1f2937;
+  -fx-prompt-text-fill: #9ca3af;
+  -fx-font-size: 14px;
+}
+
+.text-field, .password-field, .text-field-search {
+  -fx-padding: 8 12; /* Slightly reduced vertical padding for tighter look */
+  -fx-pref-height: 38px;
+}
+
+.text-field:focused, 
+.password-field:focused, 
+.text-area:focused, 
+.combo-box:focused {
+  -fx-border-color: #3b82f6;
+  -fx-border-width: 1px;
+  /* Added subtle focus shadow */
+  -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.2), 6, 0.0, 0, 0); 
+  -fx-background-color: #f8fafc;
+}
+
+/* Combo Box specifics */
+.combo-box .list-cell {
+  -fx-padding: 8 12;
+}
+
+
+/* ================= 5. BUTTON STYLES ================= */
+.button {
+  -fx-font-weight: 600;
+  -fx-font-size: 14px;
+  -fx-cursor: hand;
+  -fx-padding: 10 16;
+  -fx-border-width: 0;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0.0, 0, 2);
+  -fx-pref-height: 38px; /* Consistent height */
+}
+
+/* Primary Button (Save/Add) */
+.btn-primary {
+  -fx-background-color: #3b82f6;
+  -fx-text-fill: white;
+}
+.btn-primary:hover {
+  -fx-background-color: #2563eb;
+  -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 10, 0.0, 0, 3);
+}
+
+/* Secondary Button (Edit) - Now has a light shadow */
+.btn-secondary {
+  -fx-background-color: #f3f4f6;
+  -fx-text-fill: #374151;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 2, 0.0, 0, 1);
+}
+.btn-secondary:hover {
+  -fx-background-color: #e5e7eb;
+}
+
+/* Danger Button (Delete) */
+.btn-danger {
+  -fx-background-color: #ef4444;
+  -fx-text-fill: white;
+}
+.btn-danger:hover {
+  -fx-background-color: #dc2626;
+  -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.4), 10, 0.0, 0, 3);
+}
+
+/* Outline Button (Cancel) */
+.btn-outline {
+  -fx-background-color: transparent;
+  -fx-text-fill: #4b5563;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1px;
+  -fx-effect: none;
+}
+.btn-outline:hover {
+  -fx-background-color: #f3f4f6;
+}
+
+/* Disabled State for all buttons */
+.button:disabled {
+  -fx-opacity: 0.6;
+  -fx-cursor: default;
+  -fx-effect: none;
+}
+
+
+/* ================= 6. TABLE STYLES ================= */
+.data-table {
+  -fx-background-color: #1a478b;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8,0,0,2);
+}
+
+.table-view .column-header {
+  -fx-background-color: #f8fafc;
+  -fx-font-weight: 700;
+  -fx-font-size: 13px;
+  -fx-text-fill: #374151;
+  -fx-alignment: CENTER_LEFT;
+  -fx-padding: 12 8;
+}
+
+.table-view .column-header-background {
+  -fx-background-color: #f8fafc;
+}
+
+.table-view .table-row-cell {
+  -fx-background-color: #ffffff;
+  -fx-text-fill: #374151;
+}
+
+.table-view .table-row-cell:odd {
+  -fx-background-color: #f9fafb; /* Lighter stripe for odd rows */
+}
+
+.table-view .table-row-cell:selected {
+  -fx-background-color: #dbeafe; /* Light blue selection */
+  -fx-text-fill: #1d4ed8;
+}
+
+.table-view .table-row-cell:hover {
+  -fx-background-color: #eff6ff; /* Very light blue on hover */
+}
+
+.table-view .table-cell {
+  -fx-padding: 10 8;
+  -fx-text-fill: #374151;
+  -fx-alignment: CENTER_LEFT;
+  -fx-font-size: 13px;
+}
+
+
+/* ================= 7. MODAL/FORM OVERLAY STYLES ================= */
+.form-overlay {
+  /* Dark semi-transparent background for modal effect */
+  -fx-background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.form-card {
+  /* Styles for the central form panel (previously inline in FXML) */
+  -fx-background-color: #ffffff;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 30, 0.5, 0, 10); /* Prominent shadow */
+  -fx-padding: 30px; /* Applied inner padding here */
+}
+
+/* ================= 8. STATUS LABEL ================= */
+.status-label {
+  -fx-font-size: 12px;
+  -fx-text-fill: #6b7280;
+  -fx-padding: 5 0 0 0;
+}

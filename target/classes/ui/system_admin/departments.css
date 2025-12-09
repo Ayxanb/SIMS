@@ -1,0 +1,231 @@
+/* ================= 1. BASE STYLES ================= */
+.root {
+  -fx-font-family: "Segoe UI", system-ui, sans-serif;
+  -fx-font-size: 14px;
+  -fx-background-color: #f8fafc;
+}
+
+/* ================= 2. HEADER STYLES ================= */
+.label {
+  -fx-font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.label .header {
+  -fx-font-size: 26px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #111827;
+  -fx-padding: 0 0 5px 0;
+}
+
+.subheader {
+  -fx-font-size: 14px;
+  -fx-text-fill: #6b7280;
+}
+
+/* ================= 3. FORM PANEL & LABELS ================= */
+.form-panel {
+  -fx-background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form-title {
+  -fx-font-size: 20px;
+  -fx-font-weight: 700;
+  -fx-text-fill: #1f2937;
+  -fx-padding: 0 0 10 0;
+}
+
+.form-label, .form-label-grid {
+  -fx-font-size: 13px;
+  -fx-font-weight: 600;
+  -fx-text-fill: #4b5563;
+}
+
+/* ================= 4. INPUT FIELDS ================= */
+.text-field, .password-field, .combo-box {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+  -fx-padding: 10 12;
+  -fx-text-fill: #1f2937;
+  -fx-font-size: 14px;
+  -fx-prompt-text-fill: #9ca3af;
+  -fx-pref-height: 40px;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+  -fx-border-color: #3b82f6;
+  -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.2), 4,0,0,0);
+  -fx-background-color: #f8fafc;
+}
+
+.text-field-search {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+  -fx-padding: 10 12;
+  -fx-font-size: 14px;
+  -fx-pref-height: 40px;
+}
+
+.text-field-search:focused {
+  -fx-border-color: #3b82f6;
+  -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.2), 4,0,0,0);
+}
+
+.filter-combo {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+  -fx-padding: 0 12;
+  -fx-font-size: 14px;
+  -fx-pref-height: 40px;
+}
+
+/* ================= 5. BUTTON STYLES ================= */
+.button {
+  -fx-font-weight: 600;
+  -fx-font-size: 14px;
+  -fx-cursor: hand;
+  -fx-padding: 10 16;
+  -fx-border-width: 0;
+  -fx-pref-height: 40px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0.0, 0, 1);
+}
+
+.btn-primary {
+  -fx-background-color: #3b82f6;
+  -fx-text-fill: white;
+}
+.btn-primary:hover {
+  -fx-background-color: #2563eb;
+  -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.4), 8,0,0,2);
+}
+
+.btn-secondary {
+  -fx-background-color: #f3f4f6;
+  -fx-text-fill: #374151;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+  -fx-effect: none;
+}
+.btn-secondary:hover {
+  -fx-background-color: #e5e7eb;
+}
+
+.btn-danger {
+  -fx-background-color: #ef4444;
+  -fx-text-fill: white;
+}
+
+.btn-danger:hover {
+  -fx-background-color: #dc2626;
+  -fx-effect: dropshadow(gaussian, rgba(239,68,68,0.4), 8,0,0,2);
+}
+
+.btn-outline {
+  -fx-background-color: transparent;
+  -fx-text-fill: #4b5563;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+  -fx-effect: none;
+}
+
+.btn-outline:hover {
+  -fx-background-color: #f3f4f6;
+}
+
+.button:disabled {
+  -fx-opacity: 0.6;
+  -fx-cursor: default;
+}
+
+/* ================= 6. TABLE STYLES ================= */
+.data-table {
+  -fx-background-color: #1a478b;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8,0,0,2);
+}
+
+.table-view .column-header {
+  -fx-background-color: #f8fafc;
+  -fx-font-weight: 700;
+  -fx-font-size: 13px;
+  -fx-text-fill: #374151;
+  -fx-alignment: CENTER_LEFT;
+  -fx-padding: 12 8;
+}
+
+.table-view .column-header-background {
+  -fx-background-color: #f8fafc;
+}
+
+.table-view .table-row-cell {
+  -fx-background-color: #ffffff;
+  -fx-text-fill: #374151;
+}
+
+.table-view .table-row-cell:odd {
+  -fx-background-color: #f9fafb; /* Lighter stripe for odd rows */
+}
+
+.table-view .table-row-cell:selected {
+  -fx-background-color: #dbeafe; /* Light blue selection */
+  -fx-text-fill: #1d4ed8;
+}
+
+.table-view .table-row-cell:hover {
+  -fx-background-color: #eff6ff; /* Very light blue on hover */
+}
+
+.table-view .table-cell {
+  -fx-padding: 10 8;
+  -fx-text-fill: #374151;
+  -fx-alignment: CENTER_LEFT;
+  -fx-font-size: 13px;
+}
+
+/* ================= 7. STATUS LABEL ================= */
+.status-label {
+  -fx-text-fill: #6b7280;
+  -fx-font-size: 12px;
+  -fx-padding: 5 0 0 0;
+}
+
+/* ================= 8. CHECKBOX STYLES ================= */
+.check-box {
+  -fx-font-size: 14px;
+  -fx-text-fill: #374151;
+}
+
+.check-box .box {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #d1d5db;
+  -fx-border-width: 1;
+}
+.check-box:selected .box {
+  -fx-background-color: #3b82f6;
+  -fx-border-color: #3b82f6;
+}
+.check-box:selected .mark {
+  -fx-background-color: white;
+}
+
+/* ================= 9. LAYOUT HELPERS ================= */
+.toolbar-container {
+  -fx-background-color: white;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8,0,0,2);
+  -fx-border-color: #e5e7eb;
+  -fx-border-width: 1;
+  -fx-padding: 20;
+}
+
+.form-container {
+  -fx-background-color: white;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,3);
+  -fx-border-color: #3b82f6;
+  -fx-border-width: 0 0 3 0;
+}
+
+.vbox, .hbox {
+  -fx-spacing: 10;
+  -fx-alignment: CENTER_LEFT;
+}

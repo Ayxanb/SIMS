@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.khazar.sims.ui.system_admin.Teachers"
+            prefWidth="1050" prefHeight="720">
+
+    <!-- Top toolbar -->
+    <HBox spacing="10" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <TextField fx:id="searchField"
+                   promptText="Search teachers..."
+                   HBox.hgrow="ALWAYS"
+                   styleClass="search-field"/>
+
+        <ComboBox fx:id="departmentFilter"
+                  promptText="Department"
+                  prefWidth="180"
+                  styleClass="filter-combo"/>
+
+        <Button fx:id="addButton" text="Add" onAction="#handleAddTeacher" styleClass="btn-primary"/>
+        <Button fx:id="editButton" text="Edit" onAction="#handleEditTeacher" styleClass="btn-secondary"/>
+        <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteTeacher" styleClass="btn-danger"/>
+    </HBox>
+
+    <!-- Main table -->
+    <TableView fx:id="teacherTable"
+               AnchorPane.topAnchor="90"
+               AnchorPane.leftAnchor="0"
+               AnchorPane.rightAnchor="0"
+               AnchorPane.bottomAnchor="0">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colFirstName" text="First Name" prefWidth="160"/>
+            <TableColumn fx:id="colLastName" text="Last Name" prefWidth="160"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
+            <TableColumn fx:id="colDepartment" text="Department" prefWidth="180"/>
+        </columns>
+    </TableView>
+
+</AnchorPane>

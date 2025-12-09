@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane stylesheets="@courses.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.khazar.sims.ui.teacher.CoursesController">
+
+    <!-- Main Content Container -->
+    <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
+        
+        <!-- Statistics Cards -->
+        <HBox alignment="CENTER" maxWidth="Infinity" spacing="15">
+            <VBox spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets bottom="15" left="15" right="15" top="15" /></padding>
+                <Label styleClass="stat-label" text="TOTAL COURSES" />
+                <Label fx:id="lblTotalCourses" styleClass="stat-value" text="0" />
+            </VBox>
+            
+            <VBox spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets bottom="15" left="15" right="15" top="15" /></padding>
+                <Label styleClass="stat-label" text="TOTAL STUDENTS" />
+                <Label fx:id="lblTotalStudents" text="0">
+               <styleClass>
+                  <String fx:value="stat-value" />
+                  <String fx:value="stat-success" />
+               </styleClass></Label>
+            </VBox>
+            
+            <VBox spacing="5" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <padding><Insets bottom="15" left="15" right="15" top="15" /></padding>
+                <Label styleClass="stat-label" text="ACTIVE OFFERINGS" />
+                <Label fx:id="lblActiveOfferings" text="0">
+               <styleClass>
+                  <String fx:value="stat-value" />
+                  <String fx:value="stat-primary" />
+               </styleClass></Label>
+            </VBox>
+        </HBox>
+
+        <!-- Table Section -->
+        <VBox alignment="CENTER" maxWidth="Infinity" spacing="10" VBox.vgrow="ALWAYS">
+            <TableView fx:id="courseTable" maxWidth="Infinity" styleClass="data-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colCourseCode" prefWidth="90" text="Code" />
+                    <TableColumn fx:id="colCourseName" prefWidth="250" text="Course Name" />
+                    <TableColumn fx:id="colSection" prefWidth="80" text="Section" />
+                    <TableColumn fx:id="colSemester" prefWidth="150" text="Semester" />
+                    <TableColumn fx:id="colCredits" prefWidth="80" text="Credits" />
+                    <TableColumn fx:id="colEnrolled" prefWidth="80" text="Enrolled" />
+                    <TableColumn fx:id="colCapacity" prefWidth="80" text="Capacity" />
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+            </TableView>
+
+            <Label fx:id="statusLabel" alignment="CENTER" maxWidth="Infinity" styleClass="status-label" />
+        </VBox>
+    </VBox>
+    
+    <!-- Progress Indicator (Hidden by default) -->
+    <StackPane fx:id="progressPane" style="-fx-background-color: rgba(0,0,0,0.3);" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <ProgressIndicator fx:id="progressIndicator" prefHeight="50" prefWidth="50" />
+    </StackPane>
+    
+</AnchorPane>
