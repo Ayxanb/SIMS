@@ -4,7 +4,6 @@ C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\teacher
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\CourseOfferingTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\login\LoginController.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\data\Admin.java
-C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\dialogs\DialogResult.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\GradeTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\UserTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\TeacherTable.java
@@ -12,13 +11,11 @@ C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\t
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\data\User.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\BaseTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\core\Session.java
-C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\dialogs\DialogBuilder.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\FacultyTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\CoursesTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\UserChildTable.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\data\Exam.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\system_admin\Faculties.java
-C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\dialogs\Dialog.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\ui\system_admin\UserManagement.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\data\CourseOffering.java
 C:\Users\ayxan_5axucza\VsCode\Java\sims\src\main\java\com\khazar\sims\database\table\SemesterTable.java

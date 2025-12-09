@@ -125,7 +125,7 @@ public class StudentsController {
 
     Task<List<StudentView>> studentLoadTask = createStudentLoadTask(selected.offeringId);
     
-    updateStatus("Loading students for course offering " + selected.offeringId + "...", "info");
+    updateStatus("Loading students...", "info");
 
     studentLoadTask.setOnSucceeded(e -> {
       allStudents.setAll(studentLoadTask.getValue());

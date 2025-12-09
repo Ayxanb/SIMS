@@ -24,15 +24,14 @@ public class UserTable extends BaseTable<User> {
       rs.getString("password"),
       rs.getDate("date_of_birth")
     );
-    // Map additional fields used by the UserManagement controller
     user.setIsActive(rs.getBoolean("is_active"));
-    // Timestamp lastLoginTs = rs.getTimestamp("last_login");
-    // if (lastLoginTs != null) {
-    //     user.setLastLogin(new java.util.Date(lastLoginTs.getTime()));
-    // }
+    java.sql.Timestamp lastLoginTs = rs.getTimestamp("last_login");
+    if (lastLoginTs != null) {
+      user.setLastLogin(lastLoginTs);
+    }
     return user;
   }
-  
+
   protected void setId(User user, int id) { user.setId(id); }
   
   /* These fill methods are no longer used but are kept for context of the original file structure */
@@ -100,7 +99,6 @@ public class UserTable extends BaseTable<User> {
    */
   @Override
   public void update(User user) throws SQLException {
-    // Exclude password and date_of_birth from this general update, include is_active
     executeUpdate(
       "UPDATE users SET first_name=?, last_name=?, email=?, role=?, is_active=? WHERE id=?",
       ps -> {
@@ -108,7 +106,7 @@ public class UserTable extends BaseTable<User> {
         ps.setString(2, user.getLastName());
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getRole());
-        ps.setBoolean(5, user.isActive()); // To update status
+        ps.setBoolean(5, user.isActive());
         ps.setInt(6, user.getId());
       }
     );
@@ -121,16 +119,14 @@ public class UserTable extends BaseTable<User> {
    * @param newPassword The new password (should be hashed before call).
    */
   public void updatePassword(int userId, String newPassword) throws SQLException {
-    // NOTE: In a production application, 'newPassword' must be hashed before execution.
-    String sql = "UPDATE users SET password = ? WHERE id = ?";
-    
-    executeUpdate(
-      sql,
-      ps -> {
-        ps.setString(1, newPassword); 
-        ps.setInt(2, userId);
-      }
-    );
+    executeUpdate("UPDATE users SET password=? WHERE id=?", ps -> {
+      ps.setString(1, newPassword);
+      ps.setInt(2, userId);
+    });
+  }
+
+  public void updateLastLogin(int userId) throws SQLException {
+    executeUpdate("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id=?", ps -> ps.setInt(1, userId));
   }
 
   public User getByEmail(String email) throws SQLException {

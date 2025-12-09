@@ -5,44 +5,57 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="950.0" spacing="12.0" styleClass="content-area"
-   stylesheets="@shared_student.css"
-   xmlns="http://javafx.com/javafx/21"
-   xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.khazar.sims.ui.student.ScheduleController">
+<VBox prefHeight="600.0" prefWidth="950.0" spacing="12.0"
+      styleClass="content-area"
+      stylesheets="@shared_student.css"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.khazar.sims.ui.student.ScheduleController">
 
-<padding>
-    <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
-</padding>
+  <padding>
+    <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
+  </padding>
 
-<children>
+  <children>
+
+    <!-- ================= SCHEDULE TABLE ================= -->
     <VBox styleClass="table-container" VBox.vgrow="ALWAYS">
-        <children>
-            <TableView fx:id="scheduleTable" styleClass="data-table" VBox.vgrow="ALWAYS">
-                <columns>
-                    <TableColumn fx:id="colDay" prefWidth="90.0" text="Day" />
-                    <TableColumn fx:id="colTime" prefWidth="130.0" text="Time" />
-                    <TableColumn fx:id="colCourse" prefWidth="220.0" text="Course (Code - Name)" />
-                    <TableColumn fx:id="colRoom" prefWidth="100.0" text="Room" />
-                </columns>
-                <columnResizePolicy>
-                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                </columnResizePolicy>
-            </TableView>
-        </children>
+      <children>
+        <TableView fx:id="scheduleTable"
+                   styleClass="data-table"
+                   VBox.vgrow="ALWAYS">
+
+          <columns>
+            <TableColumn fx:id="colDay" prefWidth="90.0" text="Day"/>
+            <TableColumn fx:id="colTime" prefWidth="130.0" text="Time"/>
+            <TableColumn fx:id="colCourse" prefWidth="220.0" text="Course (Code - Name)"/>
+            <TableColumn fx:id="colRoom" prefWidth="100.0" text="Room"/>
+          </columns>
+
+          <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+          </columnResizePolicy>
+
+        </TableView>
+      </children>
     </VBox>
-    
-    <HBox alignment="CENTER_LEFT" styleClass="status-bar-container">
-        <children>
-            <Label fx:id="statusLabel" styleClass="status-label" text="Status: Ready">
-                <font><Font size="12.0" /></font>
-            </Label>
-        </children>
-        <padding>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-        </padding>
+
+    <!-- ================= STATUS BAR ================= -->
+    <HBox alignment="CENTER" styleClass="status-bar-container">
+      <children>
+        <Label fx:id="statusLabel"
+               styleClass="status-label"
+               text="Status: Ready">
+          <font>
+            <Font size="12.0"/>
+          </font>
+        </Label>
+      </children>
+
+      <padding>
+        <Insets top="5.0" right="10.0" bottom="5.0" left="10.0"/>
+      </padding>
     </HBox>
-</children>
 
-
+  </children>
 </VBox>

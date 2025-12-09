@@ -18,7 +18,7 @@ public class LoginController {
   /* ---------------- Constants ---------------- */
   private static final int MIN_PASSWORD_SIZE = 5;
   private static final double AUTO_LOGIN_DELAY_SECONDS = 1.2;
-  private static final double SUCCESS_FADE_DELAY_SECONDS = 1.0;
+  private static final double SUCCESS_FADE_DELAY_SECONDS = 1.2;
 
   private static final String EMAIL_REGEX =
     "^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,}$";
@@ -45,9 +45,8 @@ public class LoginController {
     messageLabel.setVisible(false);
     idOrEmailField.textProperty().addListener((a, b, c) -> triggerAutoLogin());
     passwordField.textProperty().addListener((a, b, c) -> triggerAutoLogin());
-    
+    idOrEmailField.setOnAction(e -> passwordField.requestFocus());
     passwordField.setOnAction(e -> tryLogin());
-
     typingPause.setOnFinished(e -> tryLogin());
   }
 
@@ -59,84 +58,69 @@ public class LoginController {
   /* ---------------- Login Flow ---------------- */
   @FXML
   private void tryLogin() {
-    if (isProcessing)
-        return;
-
+    if (isProcessing) return;
     isProcessing = true;
-    typingPause.stop(); /* Stop autologin timer if user clicks the button */
 
     String input = idOrEmailField.getText().trim();
     String pass = passwordField.getText();
-    
-    /* Input validation checks */
+
     if (input.isEmpty() || pass.isEmpty()) {
       showMessage("ID/Email and Password are required.", false);
       isProcessing = false;
       return;
     }
 
-    boolean email = input.matches(EMAIL_REGEX);
-    boolean numeric = input.matches("\\d+");
-
-    if (!email && !numeric) {
-      showMessage("Enter a valid ID (numeric) or email address.", false);
+    boolean isEmail = input.matches(EMAIL_REGEX);
+    boolean isNumeric = input.matches("\\d+");
+    if (!isEmail && !isNumeric) {
+      showMessage("Enter a valid ID or email address.", false);
       isProcessing = false;
       return;
     }
-
     if (pass.length() < MIN_PASSWORD_SIZE) {
-      showMessage("Password must be at least " + MIN_PASSWORD_SIZE + " characters long.", false);
+      showMessage("Password must be at least " + MIN_PASSWORD_SIZE + " characters.", false);
       isProcessing = false;
       return;
     }
-    
-    /* Disable controls while authenticating */
-    setControlsDisabled(true); 
-    authenticate(input, pass, email);
+
+    authenticate(input, pass, isEmail);
   }
 
   /* ---------------- Authentication ---------------- */
   private void authenticate(String input, String pass, boolean isEmail) {
     User user;
-
     try {
-      user = isEmail
-        ? Session.getUsersTable().getByEmail(input)
-        : Session.getUsersTable().getById(Integer.parseInt(input));
+      user = isEmail ? Session.getUsersTable().getByEmail(input) 
+                      : Session.getUsersTable().getById(Integer.parseInt(input));
     }
     catch (SQLException e) {
-      showMessage("Database error: " + e, false);
-      setControlsDisabled(false);
-      isProcessing = false;
-      return;
-    }
-    catch (NumberFormatException e) {
-      /* Should ideally be caught by regex check, but safe fallback */
-      showMessage("Invalid user ID format.", false);
-      setControlsDisabled(false);
+      showMessage("Error: " + e.getMessage(), false);
       isProcessing = false;
       return;
     }
 
     if (user == null) {
       showMessage(isEmail ? "Email not found." : "Invalid user ID.", false);
-      setControlsDisabled(false);
       isProcessing = false;
       return;
     }
 
     if (!user.getPassword().equals(pass)) {
       showMessage("Incorrect password.", false);
-      setControlsDisabled(false);
       isProcessing = false;
       return;
     }
-    
-    /* Successful login */
+
+    /* Update last_login timestamp */
+    try {
+      Session.getUsersTable().updateLastLogin(user.getId());
+    }
+    catch (SQLException e) {
+      System.err.println("Failed to update last_login: " + e.getMessage());
+    }
+
     showMessage("✅ Login successful! Redirecting...", true);
-    PauseTransition delay = new PauseTransition(Duration.seconds(SUCCESS_FADE_DELAY_SECONDS));
-    delay.setOnFinished(e -> Session.navigateUser(user));
-    delay.play();
+    Session.navigateUser(user);
   }
 
   /* ---------------- UI Helpers ---------------- */

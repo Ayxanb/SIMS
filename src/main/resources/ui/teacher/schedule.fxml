@@ -7,7 +7,7 @@
 
 <VBox prefHeight="600.0" prefWidth="950.0" spacing="12.0" styleClass="content-area"
    stylesheets="@shared_teacher.css"
-   xmlns="http://javafx.com/javafx/21"
+   xmlns="http://javafx.com/javafx/25"
    xmlns:fx="http://javafx.com/fxml/1"
    fx:controller="com.khazar.sims.ui.teacher.ScheduleController">
 

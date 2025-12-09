@@ -52,7 +52,8 @@ public class Database {
           email VARCHAR(255) UNIQUE NOT NULL,
           password VARCHAR(255) NOT NULL,
           date_of_birth DATE,
-          is_active BOOLEAN NOT NULL
+          is_active BOOLEAN NOT NULL,
+          `last_login` TIMESTAMP NULL DEFAULT NULL
         );
       """);
 
@@ -177,6 +178,7 @@ public class Database {
           id INT PRIMARY KEY AUTO_INCREMENT,
           offering_id INT NOT NULL,
           day_of_week ENUM('MON','TUE','WED','THU','FRI','SAT','SUN') NOT NULL,
+          date date DEFAULT NULL,
           start_time TIME NOT NULL,
           end_time TIME NOT NULL,
           room VARCHAR(50),

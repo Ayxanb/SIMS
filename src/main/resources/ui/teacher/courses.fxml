@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane stylesheets="@courses.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.khazar.sims.ui.teacher.CoursesController">
-
     <!-- Main Content Container -->
     <VBox alignment="TOP_CENTER" spacing="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
         
@@ -65,10 +63,4 @@
             <Label fx:id="statusLabel" alignment="CENTER" maxWidth="Infinity" styleClass="status-label" />
         </VBox>
     </VBox>
-    
-    <!-- Progress Indicator (Hidden by default) -->
-    <StackPane fx:id="progressPane" style="-fx-background-color: rgba(0,0,0,0.3);" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        <ProgressIndicator fx:id="progressIndicator" prefHeight="50" prefWidth="50" />
-    </StackPane>
-    
 </AnchorPane>

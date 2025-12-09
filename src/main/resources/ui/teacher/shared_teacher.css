@@ -238,11 +238,6 @@
     -fx-background-color: white;
 }
 
-/* ================= PROGRESS INDICATOR ================= */
-.progress-indicator {
-    -fx-progress-color: #3b82f6;
-}
-
 /* ================= SCROLLBAR ================= */
 .scroll-bar {
     -fx-background-color: transparent;
@@ -258,4 +253,19 @@
 
 .scroll-bar .track {
     -fx-background-color: #f1f5f9;
+}
+
+.status-success {
+  -fx-text-fill: #10B981;
+  -fx-font-weight: 600;
+}
+
+.status-error {
+  -fx-text-fill: #EF4444;
+  -fx-font-weight: 600;
+}
+
+.status-info {
+  -fx-text-fill: #3B82F6;
+  -fx-font-weight: 600;
 }

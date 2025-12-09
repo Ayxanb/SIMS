@@ -1,6 +1,7 @@
 package com.khazar.sims.database.data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 public class User {
   private int id;
   private String role;
@@ -8,8 +9,9 @@ public class User {
   private String lastName;
   private String email;
   private String password;
-  private java.sql.Date dateOfBirth;
+  private Date dateOfBirth;
   private boolean isActive;
+  private Timestamp lastLogin;
 
   public User() {}
 
@@ -56,4 +58,7 @@ public class User {
 
   public void setIsActive(boolean isActive) { this.isActive = isActive; }
   public boolean isActive() { return isActive; }
+
+  public Timestamp getLastLogin() { return lastLogin; }
+  public void setLastLogin(Timestamp lastLogin) { this.lastLogin = lastLogin; }
 }

@@ -13,20 +13,10 @@
   <left>
     <VBox alignment="TOP_LEFT" spacing="5" styleClass="sidebar">
       <children>
-        <!-- Title/Header Area -->
-        <VBox alignment="TOP_LEFT">
-          <padding>
-            <Insets left="20.0" right="20.0" />
-          </padding>
-        </VBox>
-        
-        <Separator styleClass="separator" />
-
         <!-- Navigation Groups -->
         <Button fx:id="btnCourses" maxWidth="1.7976931348623157E308" onAction="#handleFacultiesClicked" styleClass="nav-btn" text="🏤 Faculties" />
         <Button fx:id="btnEnrollmentsClicked" maxWidth="1.7976931348623157E308" onAction="#handleDepartmentsClicked" styleClass="nav-btn" text="🏢 Departments" />
         <Button fx:id="btnUsers" maxWidth="1.7976931348623157E308" onAction="#handleUsersClicked" styleClass="nav-btn" text="👤 User Management" />
-        <!-- <Button fx:id="btnSemesters" maxWidth="1.7976931348623157E308" onAction="#handleSemestersClicked" styleClass="nav-btn" text="📅 Semesters" /> -->
         
         <!-- Spacer for bottom elements -->
         <VBox VBox.vgrow="ALWAYS" />
