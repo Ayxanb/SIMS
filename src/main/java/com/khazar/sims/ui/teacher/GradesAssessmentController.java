@@ -10,7 +10,6 @@ import com.khazar.sims.database.data.Grade;
 import com.khazar.sims.database.data.User;
 
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -50,21 +49,9 @@ public class GradesAssessmentController {
     colMaxScore.setCellValueFactory(new PropertyValueFactory<>("maxScore"));
     colDate.setCellValueFactory(new PropertyValueFactory<>("dateSubmitted"));
 
-    // Load student name asynchronously
     colStudentName.setCellValueFactory(cell -> {
       int studentId = cell.getValue().getStudentId();
-      SimpleStringProperty property = new SimpleStringProperty("Loading...");
-      Task<String> task = new Task<>() {
-        @Override
-        protected String call() throws SQLException {
-          User u = Session.getUsersTable().getById(studentId);
-          return u.getFirstName() + " " + u.getLastName();
-        }
-      };
-      task.setOnSucceeded(e -> property.set(task.getValue()));
-      task.setOnFailed(e -> property.set("Unknown"));
-      new Thread(task).start();
-      return property;
+      return new javafx.beans.property.SimpleStringProperty(getStudentName(studentId));
     });
 
     gradesTable.setItems(gradeEntries);
@@ -72,43 +59,48 @@ public class GradesAssessmentController {
     gradesTable.setPlaceholder(new Label("Select a course to view exam results"));
   }
 
+  private String getStudentName(int studentId) {
+    try {
+      User u = Session.getUsersTable().getById(studentId);
+      return u.getFirstName() + " " + u.getLastName();
+    }
+    catch (SQLException e) {
+      return "Unknown";
+    }
+  }
+
   private void loadCoursesAsync() {
+    updateStatus("Loading courses...", "success");
+
     Task<List<CourseOption>> task = new Task<>() {
       @Override
-      protected List<CourseOption> call() throws SQLException {
+      protected List<CourseOption> call() throws Exception {
         int teacherId = Session.getActiveUser().getId();
         List<CourseOffering> offerings = Session.getCourseOfferingTable().getByTeacherId(teacherId);
-
         return offerings.stream().map(offering -> {
           try {
             Course course = Session.getCourseTable().getById(offering.getCourseId());
             return new CourseOption(offering.getId(), course.getCode() + " - " + course.getName());
           } catch (SQLException e) {
-            return new CourseOption(offering.getId(), "Unknown Course");
+            return new CourseOption(offering.getId(), "Unknown");
           }
         }).toList();
       }
     };
 
-    task.setOnRunning(_ -> updateStatus("Loading courses...", "info"));
-
-    task.setOnSucceeded(_ -> {
-      List<CourseOption> options = task.getValue();
-      cmbCourse.getItems().setAll(options);
-      updateStatus("Loaded " + options.size() + " courses", "success");
-
-      if (!options.isEmpty()) {
+    task.setOnSucceeded(e -> {
+      List<CourseOption> courses = task.getValue();
+      cmbCourse.getItems().setAll(courses);
+      if (!courses.isEmpty()) {
         cmbCourse.getSelectionModel().selectFirst();
         loadGradesAsync();
       }
-
-      cmbCourse.setOnAction(_ -> loadGradesAsync());
+      cmbCourse.setOnAction(evt -> loadGradesAsync());
+      updateStatus("Courses loaded", "success");
     });
 
     task.setOnFailed(e -> {
-      Throwable exception = task.getException();
-      updateStatus("Failed to load courses: " + (exception != null ? exception.getMessage() : "Unknown error"), "error");
-      System.err.println(exception);
+      updateStatus("Failed to load courses: " + task.getException().getMessage(), "error");
     });
 
     new Thread(task).start();
@@ -118,17 +110,14 @@ public class GradesAssessmentController {
     CourseOption selected = cmbCourse.getValue();
     if (selected == null) return;
 
+    updateStatus("Loading grades...", "success");
+
     Task<List<Grade>> task = new Task<>() {
       @Override
-      protected List<Grade> call() throws SQLException {
+      protected List<Grade> call() throws Exception {
         return Session.getGradeTable().getByOfferingId(selected.offeringId);
       }
     };
-
-    task.setOnRunning(e -> {
-      gradeEntries.clear();
-      updateStatus("Loading grades...", "info");
-    });
 
     task.setOnSucceeded(e -> {
       gradeEntries.setAll(task.getValue());
@@ -136,9 +125,7 @@ public class GradesAssessmentController {
     });
 
     task.setOnFailed(e -> {
-      Throwable exception = task.getException();
-      updateStatus("Failed to load assessments: " + (exception != null ? exception.getMessage() : "Unknown error"), "error");
-      System.err.println(exception);
+      updateStatus("Failed to load assessments: " + task.getException().getMessage(), "error");
     });
 
     new Thread(task).start();
@@ -147,7 +134,7 @@ public class GradesAssessmentController {
   private void updateStatus(String message, String type) {
     Platform.runLater(() -> {
       statusLabel.setText("Status: " + message);
-      statusLabel.getStyleClass().removeAll("status-success", "status-error", "status-info");
+      statusLabel.getStyleClass().removeAll("status-success", "status-error");
       statusLabel.getStyleClass().add("status-" + type);
     });
   }

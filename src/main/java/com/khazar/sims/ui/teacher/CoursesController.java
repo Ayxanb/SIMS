@@ -47,7 +47,6 @@ public class CoursesController {
   private void setupTable() {
     colCourseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
     colCourseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-    colSection.setCellValueFactory(new PropertyValueFactory<>("section"));
     colSemester.setCellValueFactory(new PropertyValueFactory<>("semesterName"));
     colCredits.setCellValueFactory(new PropertyValueFactory<>("credits"));
     colEnrolled.setCellValueFactory(new PropertyValueFactory<>("enrolledCount"));

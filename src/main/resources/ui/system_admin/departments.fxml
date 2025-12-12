@@ -5,200 +5,195 @@
 <?import javafx.geometry.Insets?>
 
 <AnchorPane stylesheets="@departments.css"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.khazar.sims.ui.system_admin.Departments">
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.khazar.sims.ui.system_admin.Departments">
 
-    <!-- Main Content Container -->
-    <VBox spacing="20" 
-          AnchorPane.topAnchor="20"
-          AnchorPane.bottomAnchor="20"
-          AnchorPane.leftAnchor="20"
-          AnchorPane.rightAnchor="20"
-          alignment="TOP_CENTER">
-        
-        <!-- Title -->
-        <Label text="Department Management" styleClass="header"/>
-
-        <!-- Toolbar - Responsive with proper spacing -->
-        <HBox spacing="15" 
-              alignment="CENTER" 
-              maxWidth="Infinity"
-              prefWidth="-1"
-              styleClass="toolBar">
-            
-            <!-- Search Section -->
-            <HBox HBox.hgrow="ALWAYS" 
-                  alignment="CENTER_LEFT">
-                <TextField fx:id="searchField"
-                           promptText="Search by name, code, or department..."
-                           HBox.hgrow="ALWAYS"
-                           maxWidth="400"
-                           styleClass="text-field-search"/>
-            </HBox>
-
-            <!-- Button Section -->
-            <HBox spacing="10" 
-                  alignment="CENTER_RIGHT"
-                  HBox.hgrow="ALWAYS">
-                <Button fx:id="addButton"
-                        text="Add Department"
-                        onAction="#handleAddDepartment"
-                        styleClass="btn-primary"
-                        prefWidth="140"/>
-                <Button fx:id="editButton"
-                        text="Edit Selected"
-                        onAction="#handleEditDepartment"
-                        styleClass="btn-secondary"
-                        prefWidth="120"
-                        disable="true"/>
-                <Button fx:id="deleteButton"
-                        text="Delete Selected"
-                        onAction="#handleDeleteDepartment"
-                        styleClass="btn-danger"
-                        prefWidth="120"
-                        disable="true"/>
-            </HBox>
-        </HBox>
-
-        <!-- Table Section -->
-        <VBox spacing="10" 
-              alignment="CENTER" 
-              VBox.vgrow="ALWAYS"
-              maxWidth="Infinity"
-              prefWidth="-1">
-            
-            <TableView fx:id="departmentTable"
-                       VBox.vgrow="ALWAYS"
-                       styleClass="data-table"
-                       maxWidth="Infinity"
-                       prefWidth="-1">
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
-                    <TableColumn fx:id="colName" text="Department Name" prefWidth="250"/>
-                    <TableColumn fx:id="colCode" text="Code" prefWidth="120"/>
-                    <TableColumn fx:id="colFaculty" text="Faculty" prefWidth="200"/>
-                </columns>
-                <columnResizePolicy>
-                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                </columnResizePolicy>
-            </TableView>
-
-            <Label fx:id="statusLabel"
-                   styleClass="status-label"
-                   maxWidth="Infinity"
-                   alignment="CENTER"/>
-        </VBox>
-    </VBox>
-
-    <!-- Form Overlay -->
-    <AnchorPane fx:id="formPane"
-                visible="false"
-                styleClass="form-panel"
-                AnchorPane.topAnchor="0"
-                AnchorPane.rightAnchor="0"
-                AnchorPane.leftAnchor="0"
-                AnchorPane.bottomAnchor="0">
-        
-        <!-- Background Overlay -->
-        <VBox style="-fx-background-color: rgba(0, 0, 0, 0.5);"
-              AnchorPane.topAnchor="0"
-              AnchorPane.rightAnchor="0"
-              AnchorPane.leftAnchor="0"
-              AnchorPane.bottomAnchor="0"/>
-        
-        <!-- Form Container -->
-        <VBox spacing="0"
-              alignment="CENTER"
-              maxWidth="500"
-              maxHeight="450"
-              AnchorPane.topAnchor="0"
-              AnchorPane.rightAnchor="0"
-              AnchorPane.leftAnchor="0"
-              AnchorPane.bottomAnchor="0">
-            
-            <!-- Form Content -->
-            <VBox spacing="20"
-                  alignment="TOP_CENTER"
-                  style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);"
-                  maxWidth="450"
-                  maxHeight="400">
-                
-                <!-- Form Header -->
-                <VBox spacing="5" 
-                      alignment="CENTER"
-                      style="-fx-padding: 25 25 0 25;">
-                    <Label fx:id="formTitle"
-                           text="Add/Edit Department"
-                           styleClass="form-title"/>
-                    <Label text="Fill in the department details and select its parent faculty."
-                           styleClass="subheader"
-                           wrapText="true"
-                           maxWidth="400"
-                           alignment="CENTER"/>
-                </VBox>
-
-                <!-- Form Fields -->
-                <VBox spacing="15" 
-                      alignment="CENTER" 
-                      maxWidth="400"
-                      style="-fx-padding: 0 25;">
-                    
-                    <!-- Department Name Field -->
-                    <VBox spacing="5" 
-                          alignment="CENTER_LEFT" 
-                          maxWidth="400">
-                        <Label text="Department Name *" styleClass="form-label"/>
-                        <TextField fx:id="txtName"
-                                   promptText="Enter department name"
-                                   prefHeight="38"
-                                   styleClass="text-field"
-                                   maxWidth="400"/>
-                    </VBox>
-                    
-                    <!-- Department Code Field -->
-                    <VBox spacing="5" 
-                          alignment="CENTER_LEFT" 
-                          maxWidth="400">
-                        <Label text="Department Code *" styleClass="form-label"/>
-                        <TextField fx:id="txtCode"
-                                   promptText="Enter unique code"
-                                   prefHeight="38"
-                                   styleClass="text-field"
-                                   maxWidth="400"/>
-                    </VBox>
-                    
-                    <!-- Faculty Selection -->
-                    <VBox spacing="5" 
-                          alignment="CENTER_LEFT" 
-                          maxWidth="400">
-                        <Label text="Parent Faculty *" styleClass="form-label"/>
-                        <ComboBox fx:id="cmbFaculty"
-                                  promptText="Select Faculty"
-                                  prefHeight="38"
-                                  maxWidth="400"
-                                  styleClass="combo-box"/>
-                    </VBox>
-                </VBox>
-
-                <!-- Form Buttons -->
-                <HBox spacing="15" 
-                      alignment="CENTER"
-                      style="-fx-padding: 10 25 25 25;">
-                    <Button text="Cancel"
-                            onAction="#handleCancel"
-                            styleClass="btn-outline"
-                            prefWidth="120"
-                            prefHeight="38"/>
-                    <Button text="Save"
-                            onAction="#handleSaveDepartment"
-                            styleClass="btn-primary"
-                            prefWidth="120"
-                            prefHeight="38"
-                            defaultButton="true"/>
-                </HBox>
-            </VBox>
-        </VBox>
-    </AnchorPane>
+  <!-- Main Content Container -->
+  <VBox spacing="20" 
+      AnchorPane.topAnchor="20"
+      AnchorPane.bottomAnchor="20"
+      AnchorPane.leftAnchor="20"
+      AnchorPane.rightAnchor="20"
+      alignment="TOP_CENTER">
     
+    <!-- Title -->
+    <Label text="Department Management" styleClass="header"/>
+
+    <!-- Toolbar - Responsive with proper spacing -->
+    <HBox spacing="15" 
+        alignment="CENTER" 
+        maxWidth="Infinity"
+        prefWidth="-1"
+        styleClass="toolBar">
+      
+      <!-- Search Section -->
+      <HBox HBox.hgrow="ALWAYS" 
+          alignment="CENTER_LEFT">
+        <TextField fx:id="searchField"
+               promptText="Search by name, code, or department..."
+               HBox.hgrow="ALWAYS"
+               maxWidth="400"
+               styleClass="text-field-search"/>
+      </HBox>
+
+      <!-- Button Section -->
+      <HBox spacing="10" 
+          alignment="CENTER_RIGHT"
+          HBox.hgrow="ALWAYS">
+        <Button fx:id="addButton"
+            text="Add Department"
+            onAction="#handleAddDepartment"
+            styleClass="btn-primary"
+            prefWidth="140"/>
+        <Button fx:id="editButton"
+            text="Edit Selected"
+            onAction="#handleEditDepartment"
+            styleClass="btn-secondary"
+            prefWidth="120"
+            disable="true"/>
+        <Button fx:id="deleteButton"
+            text="Delete Selected"
+            onAction="#handleDeleteDepartment"
+            styleClass="btn-danger"
+            prefWidth="120"
+            disable="true"/>
+      </HBox>
+    </HBox>
+
+    <!-- Table Section -->
+    <VBox spacing="10" 
+        alignment="CENTER" 
+        VBox.vgrow="ALWAYS"
+        maxWidth="Infinity"
+        prefWidth="-1">
+      
+      <TableView fx:id="departmentTable"
+             VBox.vgrow="ALWAYS"
+             styleClass="data-table"
+             maxWidth="Infinity"
+             prefWidth="-1">
+        <columns>
+          <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+          <TableColumn fx:id="colName" text="Department Name" prefWidth="250"/>
+          <TableColumn fx:id="colCode" text="Code" prefWidth="120"/>
+          <TableColumn fx:id="colFaculty" text="Faculty" prefWidth="200"/>
+        </columns>
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+      </TableView>
+
+      <Label fx:id="statusLabel"
+           styleClass="status-label"
+           maxWidth="Infinity"
+           alignment="CENTER"/>
+    </VBox>
+  </VBox>
+
+  <!-- Form Overlay -->
+  <AnchorPane fx:id="formPane"
+        visible="false"
+        styleClass="form-panel"
+        AnchorPane.topAnchor="0"
+        AnchorPane.rightAnchor="0"
+        AnchorPane.leftAnchor="0"
+        AnchorPane.bottomAnchor="0">
+    
+    <!-- Background Overlay -->
+    <VBox style="-fx-background-color: rgba(0, 0, 0, 0.5);"
+        AnchorPane.topAnchor="0"
+        AnchorPane.rightAnchor="0"
+        AnchorPane.leftAnchor="0"
+        AnchorPane.bottomAnchor="0"/>
+    
+    <!-- Form Container -->
+    <VBox spacing="0"
+        alignment="CENTER"
+        maxWidth="500"
+        maxHeight="450"
+        AnchorPane.topAnchor="0"
+        AnchorPane.rightAnchor="0"
+        AnchorPane.leftAnchor="0"
+        AnchorPane.bottomAnchor="0">
+      
+      <!-- Form Content -->
+      <VBox spacing="20"
+          alignment="TOP_CENTER"
+          style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);"
+          maxWidth="450"
+          maxHeight="400">
+        
+        <!-- Form Header -->
+        <VBox spacing="5" 
+            alignment="CENTER"
+            style="-fx-padding: 25 25 0 25;">
+          <Label fx:id="formTitle"
+               text="Add/Edit Department"
+               styleClass="form-title"/>
+        </VBox>
+
+        <!-- Form Fields -->
+        <VBox spacing="15" 
+            alignment="CENTER" 
+            maxWidth="400"
+            style="-fx-padding: 0 25;">
+          
+          <!-- Department Name Field -->
+          <VBox spacing="5" 
+              alignment="CENTER_LEFT" 
+              maxWidth="400">
+            <Label text="Department Name *" styleClass="form-label"/>
+            <TextField fx:id="txtName"
+                   promptText="Enter department name"
+                   prefHeight="38"
+                   styleClass="text-field"
+                   maxWidth="400"/>
+          </VBox>
+          
+          <!-- Department Code Field -->
+          <VBox spacing="5" 
+              alignment="CENTER_LEFT" 
+              maxWidth="400">
+            <Label text="Department Code *" styleClass="form-label"/>
+            <TextField fx:id="txtCode"
+                   promptText="Enter unique code"
+                   prefHeight="38"
+                   styleClass="text-field"
+                   maxWidth="400"/>
+          </VBox>
+          
+          <!-- Faculty Selection -->
+          <VBox spacing="5" 
+              alignment="CENTER_LEFT" 
+              maxWidth="400">
+            <Label text="Parent Faculty *" styleClass="form-label"/>
+            <ComboBox fx:id="cmbFaculty"
+                  promptText="Select Faculty"
+                  prefHeight="38"
+                  maxWidth="400"
+                  styleClass="combo-box"/>
+          </VBox>
+        </VBox>
+
+        <!-- Form Buttons -->
+        <HBox spacing="15" 
+            alignment="CENTER"
+            style="-fx-padding: 10 25 25 25;">
+          <Button text="Cancel"
+              onAction="#handleCancel"
+              styleClass="btn-outline"
+              prefWidth="120"
+              prefHeight="38"/>
+          <Button text="Save"
+              onAction="#handleSaveDepartment"
+              styleClass="btn-primary"
+              prefWidth="120"
+              prefHeight="38"
+              defaultButton="true"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </AnchorPane>
+  
 </AnchorPane>

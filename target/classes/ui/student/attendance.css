@@ -1,0 +1,183 @@
+@import url("shared_student.css");
+
+/* ==================== STUDENT ATTENDANCE STYLES ==================== */
+
+/* --- Page Header --- */
+.header-section {
+  -fx-padding: 10 0;
+}
+
+.page-title {
+  -fx-text-fill: #1E293B;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+}
+
+/* --- Statistics Panel --- */
+.stats-panel {
+  -fx-spacing: 12;
+  -fx-padding: 0;
+}
+
+.stat-card {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 2;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+  -fx-transition: all 0.3s ease;
+}
+
+.stat-card-success {
+  -fx-border-color: #10B981;
+  -fx-background-color: #F0FDF4;
+}
+
+.stat-card-danger {
+  -fx-border-color: #EF4444;
+  -fx-background-color: #FEF2F2;
+}
+
+.stat-card-primary {
+  -fx-border-color: #3B82F6;
+  -fx-background-color: #EFF6FF;
+}
+
+.stat-label {
+  -fx-text-fill: #64748B;
+  -fx-font-size: 10px;
+  -fx-font-weight: 600;
+  -fx-letter-spacing: 0.5px;
+}
+
+.stat-value {
+  -fx-text-fill: #1E293B;
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+}
+
+.stat-success {
+  -fx-text-fill: #10B981;
+}
+
+.stat-danger {
+  -fx-text-fill: #EF4444;
+}
+
+.stat-primary {
+  -fx-text-fill: #3B82F6;
+}
+
+/* --- Filter Section --- */
+.filter-section {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
+  -fx-padding: 12;
+}
+
+.filter-label {
+  -fx-text-fill: #475569;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+}
+
+.course-combo {
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #CBD5E1;
+  -fx-border-width: 1;
+  -fx-font-size: 12px;
+  -fx-padding: 8 12;
+}
+
+.course-combo:focused {
+  -fx-border-color: #3B82F6;
+  -fx-border-width: 2;
+}
+
+.course-combo .list-cell {
+  -fx-padding: 8 12;
+}
+
+.course-combo .list-cell:hover {
+  -fx-background-color: #F1F5F9;
+}
+
+/* --- Table Specific Styles --- */
+.data-table .table-row-cell.row-present {
+  -fx-background-color: #F0FDF4;
+}
+
+.data-table .table-row-cell.row-present:hover {
+  -fx-background-color: #DCFCE7;
+}
+
+.data-table .table-row-cell.row-absent {
+  -fx-background-color: #FEF2F2;
+}
+
+.data-table .table-row-cell.row-absent:hover {
+  -fx-background-color: #FEE2E2;
+}
+
+/* --- Status Column Styling --- */
+.data-table .table-cell.status-present {
+  -fx-text-fill: #10B981;
+  -fx-font-weight: bold;
+  -fx-background-color: #D1FAE5;
+  -fx-padding: 6 12;
+}
+
+.data-table .table-cell.status-absent {
+  -fx-text-fill: #EF4444;
+  -fx-font-weight: bold;
+  -fx-background-color: #FEE2E2;
+  -fx-padding: 6 12;
+}
+
+/* --- Status Badge Effect --- */
+.data-table .table-cell.status-present::before {
+  content: "✓ ";
+  -fx-font-weight: bold;
+}
+
+.data-table .table-cell.status-absent::before {
+  content: "✗ ";
+  -fx-font-weight: bold;
+}
+
+/* --- Day Column Styling --- */
+.data-table .table-cell:filled {
+  -fx-font-weight: 500;
+}
+
+/* --- Animation for Stats --- */
+.stat-card {
+  -fx-animation: fadeInUp 0.5s ease;
+}
+
+/* --- Hover Effect for Table Rows --- */
+.data-table .table-row-cell:hover {
+  -fx-background-color: #F8FAFC;
+  -fx-cursor: pointer;
+  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+/* --- Empty State --- */
+.data-table .placeholder {
+  -fx-padding: 40;
+}
+
+.data-table .placeholder .label {
+  -fx-text-fill: #94A3B8;
+  -fx-font-size: 14px;
+  -fx-font-style: italic;
+}
+
+/* --- Scrollbar Customization --- */
+.data-table .scroll-bar:vertical .thumb {
+  -fx-background-color: #CBD5E1;
+}
+
+.data-table .scroll-bar:vertical .thumb:hover {
+  -fx-background-color: #94A3B8;
+}

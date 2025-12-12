@@ -138,11 +138,6 @@
   -fx-transition: all 0.2s ease;
 }
 
-.stat-card:hover {
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);
-  -fx-translate-y: -2;
-}
-
 .stat-label {
   -fx-text-fill: #64748B;
   -fx-font-size: 9px;

@@ -13,11 +13,16 @@ public class AttendanceTable {
   public void saveAttendance(List<Attendance> attendanceRecords) throws SQLException {
     if (attendanceRecords == null || attendanceRecords.isEmpty())
       return;
+      
+    /* * Uses ON DUPLICATE KEY UPDATE to handle both inserts 
+     * (if attendance hasn't been taken) and updates (if it has).
+     */
     final String sql = """
       INSERT INTO attendances (session_id, student_id, present)
       VALUES (?, ?, ?)
       ON DUPLICATE KEY UPDATE present = VALUES(present)
     """;
+    
     Connection conn = Session.getDatabaseConnection();
     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
       for (Attendance a : attendanceRecords) {
@@ -30,33 +35,33 @@ public class AttendanceTable {
     }
   }
 
-  /* ---------- Retrieve attendance for a specific session ---------- */
+  /* ---------- Retrieve attendance for a specific schedule session (used by Teacher) ---------- */
   public List<Attendance> getForSchedule(int sessionId) throws SQLException {
     final String sql = "SELECT session_id, student_id, present FROM attendances WHERE session_id = ?";
     Connection conn = Session.getDatabaseConnection();
     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-
       stmt.setInt(1, sessionId);
       return fetchList(stmt);
     }
   }
 
-  /* ---------- Retrieve attendance for a specific student ---------- */
-  public List<Attendance> getForStudent(int studentId) throws SQLException {
+  /* * ---------- Retrieve attendance for a specific student (used by Student) ---------- 
+   * Renamed from getForStudent to follow getBy...Id convention.
+   */
+  public List<Attendance> getByStudentId(int studentId) throws SQLException {
     final String sql = "SELECT session_id, student_id, present FROM attendances WHERE student_id = ?";
     Connection conn = Session.getDatabaseConnection();
     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-
       stmt.setInt(1, studentId);
       return fetchList(stmt);
     }
   }
 
-  /* ---------- Retrieve a single attendance record ---------- */
+  /* ---------- Retrieve a single attendance record by session and student ID ---------- */
   public Attendance get(int sessionId, int studentId) throws SQLException {
     final String sql = "SELECT session_id, student_id, present FROM attendances WHERE session_id = ? AND student_id = ?";
     try (Connection conn = Session.getDatabaseConnection();
-       PreparedStatement stmt = conn.prepareStatement(sql)) {
+      PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setInt(1, sessionId);
       stmt.setInt(2, studentId);
@@ -78,7 +83,7 @@ public class AttendanceTable {
   public void delete(int sessionId, int studentId) throws SQLException {
     final String sql = "DELETE FROM attendances WHERE session_id = ? AND student_id = ?";
     try (Connection conn = Session.getDatabaseConnection();
-       PreparedStatement stmt = conn.prepareStatement(sql)) {
+      PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setInt(1, sessionId);
       stmt.setInt(2, studentId);

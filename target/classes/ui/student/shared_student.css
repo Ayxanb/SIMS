@@ -153,7 +153,7 @@
 
 /* ================= TABLE STYLES ================= */
 .data-table {
-  -fx-background-color: #ffffff;
+  -fx-background-color: #1a478b;
   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 2);
 }
 
@@ -200,6 +200,12 @@
   -fx-text-fill: #6b7280;
   -fx-font-size: 12px;
   -fx-padding: 5 0 0 0;
+}
+
+.status-bar-container {
+  -fx-background-color: #F8FAFC;
+  -fx-border-color: #E2E8F0;
+  -fx-border-width: 1;
 }
 
 /* ================= READ-ONLY BADGE ================= */

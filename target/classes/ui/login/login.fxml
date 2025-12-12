@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.khazar.sims.ui.login.LoginController">
+<AnchorPane prefHeight="650.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.khazar.sims.ui.login.LoginController">
 
-    <!-- Main background is defined in CSS #background -->
-    <VBox id="background" alignment="CENTER" spacing="15" stylesheets="@login.css" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        
-        <!-- Login Card Container -->
-        <VBox styleClass="login-card" alignment="TOP_CENTER" spacing="20">
-            
-            <Label styleClass="header-title" text="Welcome to SIMS" />
-            <Label styleClass="header-subtitle" text="Please log in to continue" />
+    <VBox id="background"
+          alignment="CENTER"
+          stylesheets="@login.css"
+          AnchorPane.topAnchor="0"
+          AnchorPane.rightAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0">
 
-            <!-- Fields Container -->
-            <VBox spacing="10" maxWidth="320">
-                <TextField fx:id="idOrEmailField" styleClass="text-input" promptText="User ID or Email" />
-                <PasswordField fx:id="passwordField" styleClass="text-input" promptText="Password" />
+        <VBox styleClass="login-card"
+              alignment="TOP_CENTER"
+              spacing="22">
+
+            <!-- Titles -->
+            <Label text="Welcome to SIMS" styleClass="header-title"/>
+            <Label text="Type your credentials to log in" styleClass="header-subtitle"/>
+
+            <!-- Fields -->
+            <VBox spacing="14" maxWidth="320">
+                <TextField fx:id="idOrEmailField"
+                           styleClass="text-input"
+                           promptText="User ID or Email"/>
+
+                <PasswordField fx:id="passwordField"
+                               styleClass="text-input"
+                               promptText="Password"/>
             </VBox>
 
-            <!-- Message Label Area -->
-            <Label fx:id="messageLabel" styleClass="message-label" wrapText="true" minHeight="30" />            
+            <!-- Status Message -->
+            <Label fx:id="messageLabel"
+                   styleClass="message-label"
+                   wrapText="true"
+                   visible="false"/>
         </VBox>
-    </VBox>
 
+    </VBox>
 </AnchorPane>

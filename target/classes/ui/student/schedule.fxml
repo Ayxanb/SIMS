@@ -21,10 +21,7 @@
     <!-- ================= SCHEDULE TABLE ================= -->
     <VBox styleClass="table-container" VBox.vgrow="ALWAYS">
       <children>
-        <TableView fx:id="scheduleTable"
-                   styleClass="data-table"
-                   VBox.vgrow="ALWAYS">
-
+        <TableView fx:id="scheduleTable" styleClass="data-table" VBox.vgrow="ALWAYS">
           <columns>
             <TableColumn fx:id="colDay" prefWidth="90.0" text="Day"/>
             <TableColumn fx:id="colTime" prefWidth="130.0" text="Time"/>

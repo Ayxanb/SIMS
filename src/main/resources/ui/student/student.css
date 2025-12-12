@@ -71,8 +71,7 @@
 
 /* ================= LOGOUT BUTTON ================= */
 .logout-btn {
-  -fx-background-color: #ef4444; /* Red danger color */
-  -fx-text-fill: white;
+  -fx-text-fill: red; /* Red danger color */
   -fx-font-weight: 400;
   -fx-padding: 12 20;
   -fx-cursor: hand;
